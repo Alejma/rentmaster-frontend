@@ -1,0 +1,118 @@
+/* Botón de Agregar Apartamento */
+.btn-add-apartment {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #2ecc71; /* Color del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    font-size: 18px; /* Tamaño de la fuente */
+    font-weight: bold; /* Peso de la fuente */
+    text-align: center; /* Alineación del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 20px; /* Margen inferior */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+/* Hover para cambiar el color del botón */
+.btn-add-apartment:hover {
+    background-color: #27ae60; /* Color más oscuro al pasar el mouse */
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 800px; /* Ancho máximo */
+    margin: 50px auto; /* Margen superior e inferior */
+    background-color: #fff; /* Color de fondo */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra */
+    padding: 20px; /* Relleno interno */
+}
+
+/* Título */
+.container h2 {
+    text-align: center; /* Alineación centrada */
+    color: #2c3e50; /* Color del texto */
+    font-size: 28px; /* Tamaño de la fuente */
+    margin-bottom: 20px; /* Margen inferior */
+    border-bottom: 2px solid #2980b9; /* Línea inferior */
+    padding-bottom: 10px; /* Relleno inferior */
+}
+
+/* Contenedor de tarjetas */
+.card-container {
+    display: flex; /* Uso de flexbox para disposición */
+    flex-wrap: wrap; /* Permitir que los elementos se ajusten */
+    justify-content: space-between; /* Espaciado entre elementos */
+}
+
+/* Tarjeta de apartamento */
+.apartment-card {
+    background-color: #f9f9f9; /* Color de fondo de la tarjeta */
+    border: 1px solid #ddd; /* Borde */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px; /* Relleno interno */
+    margin-bottom: 20px; /* Margen inferior */
+    width: calc(48% - 10px); /* Ancho de la tarjeta con margen */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
+}
+
+/* Contenedor de botones en la tarjeta */
+.button-container {
+    display: flex; /* Uso de flexbox para disposición */
+    justify-content: space-between; /* Espaciado entre botones */
+    margin-top: 10px; /* Margen superior */
+}
+
+/* Estilos para los botones cuadrados */
+.btn-square {
+    width: 80px; /* Tamaño del botón */
+    height: 40px; /* Tamaño del botón */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    display: flex; /* Para centrar el icono */
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+/* Estilos para el botón amarillo */
+.btn-yellow {
+    background-color: #f39c12; /* Color de fondo amarillo */
+    color: white; /* Color del ícono */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+/* Estilos para el botón azul */
+.btn-blue {
+    background-color: #3498db; /* Color de fondo azul */
+    color: white; /* Color del ícono */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+/* Estilos para el botón rojo */
+.btn-red {
+    background-color: #e74c3c; /* Color de fondo rojo */
+    color: white; /* Color del ícono */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+/* Efecto hover para los botones */
+.btn-yellow:hover {
+    background-color: #e67e22; /* Color más oscuro al pasar el mouse */
+}
+
+.btn-blue:hover {
+    background-color: #2980b9; /* Color más oscuro al pasar el mouse */
+}
+
+.btn-red:hover {
+    background-color: #c0392b; /* Color más oscuro al pasar el mouse */
+}
+
+/* Estilo para los íconos */
+.btn i {
+    font-size: 18px; /* Tamaño del ícono */
+    vertical-align: middle; /* Alineación vertical */
+}

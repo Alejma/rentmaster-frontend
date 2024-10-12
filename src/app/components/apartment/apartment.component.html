@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <button class="btn-add-apartment" routerLink="/new_apartment">Agregar Apartamento</button>
+
+    <h2>APARTAMENTOS</h2>
+
+    <div class="card-container">
+        <div class="apartment-card" *ngFor="let apartment of apartments">
+            <h3>Apartamento {{ apartment.apartment_id }}</h3>
+            <p><strong>Arrendatario:</strong> Arrendatario {{ apartment.tenant_id }}</p>
+            <p><strong>Precio:</strong> ${{ apartment.rent_price }}</p>
+            <div class="button-container">
+                <button class="btn-square btn-blue">
+                    <i class="fa fa-eye"></i>
+                </button>
+                <button class="btn-square btn-yellow">
+                    <i class="fa fa-pencil"></i>
+                </button>
+                <button class="btn-square btn-red">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<div class="container">
+    
+    <button class="btn-add-tenant" routerLink= "/signIn">Agregar Arrendatario</button>
+
+    <h2>ARRENDATARIOS</h2>
+    <table class="tenant-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo Electrónico</th>
+                <th>Número Telefónico</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tenant of tenants">
+                <td>{{ tenant.name }}</td>
+                <td>{{ tenant.email }}</td>
+                <td>{{ tenant.phone_number }}</td>
+                <td>
+                    
+                    <button class="btn btn-info">
+                        <i class="fa fa-eye"></i>
+                    </button>
+                    
+                   
+                    <button class="btn btn-edit">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                    
+                    <button class="btn btn-delete">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

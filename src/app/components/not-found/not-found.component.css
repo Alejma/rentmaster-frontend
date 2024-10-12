@@ -1,0 +1,30 @@
+.not-found {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .not-found .icon {
+    font-size: 4rem;
+    color: #ff0000;
+    margin-bottom: 20px;
+  }
+  
+  .not-found h1 {
+    font-size: 3rem;
+    color: #333;
+  }
+  
+  .not-found p {
+    font-size: 1.5rem;
+    margin: 20px 0;
+  }
+  
+  .not-found a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+  
+  .not-found a:hover {
+    text-decoration: underline;
+  }

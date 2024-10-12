@@ -1,0 +1,19 @@
+<div class="wrapper">
+    <div *ngIf="!loading" class="body">
+        <img class="logo" src="assets/img/casa1.png" alt="img casa1">
+        <h1>Login</h1>
+        <div class="form-floating mb-3 mt-3">
+            <input type="text" [(ngModel)]="email" class="form-control" placeholder="name@example.com">
+            <label>Correo electronico</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" [(ngModel)]="password" class="form-control" placeholder="Password">
+            <label>Contraseña</label>
+        </div>
+        <div class="d-grid gap-2">
+            <button type="button" class="btn btn-primary btn-lg" (click)="login()">Iniciar sesión</button>
+        </div>
+        <p class="mt-3">Olvidaste la contraseña? <a routerLink= "/signIn" >Recuperar</a></p>
+    </div>
+    <app-spinner *ngIf="loading"></app-spinner>
+</div>

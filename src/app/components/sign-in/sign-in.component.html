@@ -1,0 +1,35 @@
+<div class="wrapper">
+    <div *ngIf="!loading" class="body">
+        <img class="logo" src="assets/img/casa1.png" alt="img casa1">
+        <h3>Registro de Arrendatario</h3>
+        <div class="form-floating mb-2 mt-3">
+            <input type="text" [(ngModel)]="name" class="form-control" placeholder="Carlos Marin">
+            <label>Nombre</label>
+        </div>
+        <div class="form-floating mb-2">
+            <input type="text" [(ngModel)]="email" class="form-control" placeholder="name@example.com">
+            <label>Correo electronico</label>
+        </div>
+        <div class="form-floating mb-2">
+            <input type="password" [(ngModel)]="password" class="form-control" placeholder="Password">
+            <label>Contraseña</label>
+        </div>
+        <div class="form-floating mb-2">
+            <input type="password" [(ngModel)]="confirmPassword" class="form-control" placeholder="Password">
+            <label>Repetir Contraseña</label>
+        </div>
+        <div class="form-floating mb-2">
+            <input type="text" [(ngModel)]="payment_status" class="form-control" placeholder="Pagado">
+            <label>Estado de pago</label>
+        </div>
+        <div class="form-floating mb-2">
+            <input type="number" [(ngModel)]="phone_number" class="form-control" placeholder="3168498515">
+            <label>Numero de telefono</label>
+        </div>
+        <div class="d-grid gap-2 mb-3">
+            <button type="button" (click)="addTenant()" class="btn btn-primary btn-lg">Registrar</button>
+        </div>
+        <a routerLink="/tenants">Volver</a>
+    </div>
+    <app-spinner  *ngIf="loading"></app-spinner>
+</div>

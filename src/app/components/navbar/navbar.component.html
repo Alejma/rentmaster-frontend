@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav class="navbar navbar-expand-lg bg-dark-blue">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/dashboard">RentMaster</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto justify-content-center">          
+            <li class="nav-item">
+                <a class="nav-link btn btn-nav" routerLink="/apartments">Apartamentos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-nav" routerLink="/tenants">Arrendatarios</a>
+            </li>           
+            <li class="nav-item">
+                <a class="nav-link btn btn-nav" routerLink="/contratos">Contratos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-nav" routerLink="/tickets">Tickets</a>
+            </li>
+        </ul>
+        
+        <ul class="navbar-nav ms-auto align-items-left">
+            <li class="nav-item">
+                <a class="nav-link">
+                    <i class="fa fa-sign-out " style="font-size:48px;color:rgb(255, 255, 255)" routerLink="/login"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,41 @@
+<div class="wrapper">
+    <div *ngIf="!loading" class="body">
+        <img class="logo" src="assets/img/casa1.png" alt="img casa1">
+        <h3>Registro de apartamento</h3>
+        <div class="form-floating mb-2 mt-3">
+            <input type="text" [(ngModel)]="address" class="form-control" placeholder="Dirección">
+            <label>Dirección</label>
+        </div>
+        <div class="form-floating mb-2 mt-3">
+            <input type="number" [(ngModel)]="admin_id" class="form-control" placeholder="Admin id">
+            <label>Admin</label>
+        </div>
+        <div class="form-floating mb-2 mt-3">
+            <input type="number" [(ngModel)]="tenant_id" class="form-control" placeholder="Tenant id">
+            <label>Arrendatario</label>
+        </div>
+        <div class="form-floating mb-2 mt-3">
+            <input type="number" [(ngModel)]="apartment_id" class="form-control" placeholder="Apartment id">
+            <label>apartamento</label>
+        </div>
+        <div class="form-floating mb-2">
+            <input type="text" [(ngModel)]="description" class="form-control" placeholder="Descripción">
+            <label>Descripción</label>
+        </div>
+        <div class="form-floating mb-2">
+            <input type="number" [(ngModel)]="rent_price" class="form-control" placeholder="Precio">
+            <label>Precio</label>
+        </div>        
+        <div class="form-floating mb-2">
+            <select [(ngModel)]="status" class="form-control" placeholder="Estado">
+                <option value="disponible">Disponible</option>
+                <option value="ocupado">Ocupado</option>
+              </select>
+        </div>    
+        <div class="d-grid gap-2 mb-3">
+            <button type="button" (click)="addApartment()" class="btn btn-primary btn-lg">Agregar</button>
+        </div>
+        <a routerLink="/apartments">Volver</a>
+    </div>
+    <app-spinner  *ngIf="loading"></app-spinner>
+</div>
