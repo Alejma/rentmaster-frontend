@@ -47,7 +47,7 @@ export class SignInComponent {
       password: this.password,
       payment_status: this.payment_status,
       phone_number: this.phone_number,
-    }
+    }as Omit<Tenant, 'tenant_id'>;
 
     this.loading = true;
     this._tenantService.signIn(tenant).subscribe(data =>{

@@ -1,4 +1,5 @@
 export interface Tenant{
+    tenant_id?: number;
     name: string,
     email: string,
     password: string,

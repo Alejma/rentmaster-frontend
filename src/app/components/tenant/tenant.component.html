@@ -1,7 +1,10 @@
 <app-navbar></app-navbar>
 <div class="container">
     
-    <button class="btn-add-tenant" routerLink= "/signIn">Agregar Arrendatario</button>
+    <button class="btn-add-tenant" routerLink= "/signIn">
+        <i class="fa fa-user-plus"></i>
+        Agregar Arrendatario
+    </button>
 
     <h2>ARRENDATARIOS</h2>
     <table class="tenant-table">
@@ -19,17 +22,12 @@
                 <td>{{ tenant.email }}</td>
                 <td>{{ tenant.phone_number }}</td>
                 <td>
-                    
-                    <button class="btn btn-info">
-                        <i class="fa fa-eye"></i>
-                    </button>
-                    
                    
-                    <button class="btn btn-edit">
+                    <button class="btn btn-edit" (click)="editTenant(tenant)">
                         <i class="fa fa-pencil"></i>
                     </button>
                     
-                    <button class="btn btn-delete">
+                    <button class="btn btn-delete" (click)="deleteTenant(tenant)">
                         <i class="fa fa-trash"></i>
                     </button>
                 </td>

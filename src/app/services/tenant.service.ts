@@ -35,7 +35,11 @@ export class TenantService {
     return this.http.post<string>(`${this.myAppUrl}${this.myApiUrl}/login`, tenant);
   }
 
-  deleteTenant(id: number): Observable<any> {
-    return this.http.delete(`${this.myAppUrl}/${id}`);
+  deleteTenant(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}${id}`);
+  }
+
+  updateTenant(id: number, tenant: Tenant): Observable<void> {
+  return this.http.put<void>(`${this.myAppUrl}${this.myApiUrl}${id}`, tenant);
   }
 }
