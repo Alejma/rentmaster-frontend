@@ -32,4 +32,14 @@ export class ApartmentService {
     });
     return this.http.post(`${this.myAppUrl}${this.myApiUrl}`, apartment, { headers });
   }
+
+  deleteApartment(apartment_id: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.delete(`${this.myAppUrl}${this.myApiUrl}/${apartment_id}`, {headers});
+  }
+
+  
 }

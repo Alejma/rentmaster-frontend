@@ -24,12 +24,14 @@ export class NewApartmentComponent {
   address: string = '';
   description: string = '';
   rent_price: number = 0;
+  name: string = '';
 
   loading: boolean = false;
 
   constructor(private toastr: ToastrService,
               private _apartmentService: ApartmentService,
               private router: Router) {}
+              
 
   addApartment() {
     this.loading = true;
@@ -41,7 +43,8 @@ export class NewApartmentComponent {
       address: this.address,
       description: this.description,
       rent_price: this.rent_price,
-      status: this.status
+      status: this.status,
+      name: this.name
     };
 
     this._apartmentService.addApartment(apartment).subscribe(data =>{
