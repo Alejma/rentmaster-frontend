@@ -41,5 +41,13 @@ export class ApartmentService {
     return this.http.delete(`${this.myAppUrl}${this.myApiUrl}/${apartment_id}`, {headers});
   }
 
-  
+  getApartmentById(apartment_id: number): Observable<Apartment> {
+    const token = localStorage.getItem('token'); 
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`, 
+    });
+    
+    return this.http.get<Apartment>(`${this.myAppUrl}${this.myApiUrl}/${apartment_id}`, { headers }); // Agregada la barra '/'
+}
+
 }
