@@ -5,31 +5,33 @@
         <br>
         <div class="form-grid">
             <div class="form-floating mb-2">
-                <input type="text" [(ngModel)]="name" class="form-control" placeholder="Nombre">
+                <input type="text" [(ngModel)]="name" class="form-control">
                 <label>Nombre</label>
             </div>
             <div class="form-floating mb-2">
-                <input type="text" [(ngModel)]="address" class="form-control" placeholder="Dirección">
+                <input type="text" [(ngModel)]="address" class="form-control">
                 <label>Dirección</label>
             </div>
             <div class="form-floating mb-2">
-                <input type="number" [(ngModel)]="admin_id" class="form-control" placeholder="Admin id">
+                <input type="number" [(ngModel)]="admin_id" class="form-control" >
                 <label>Admin</label>
             </div>
             <div class="form-floating mb-2">
-                <input type="number" [(ngModel)]="tenant_id" class="form-control" placeholder="Tenant id">
+                <select [(ngModel)]="tenant_id" class="form-control">
+                    <option *ngFor="let tenant of tenants" [value]="tenant.tenant_id">{{ tenant.name }}</option>
+                </select>
                 <label>Arrendatario</label>
             </div>
             <div class="form-floating mb-2">
-                <input type="text" [(ngModel)]="description" class="form-control" placeholder="Descripción">
+                <input type="text" [(ngModel)]="description" class="form-control" >
                 <label>Descripción</label>
             </div>
             <div class="form-floating mb-2">
-                <input type="number" [(ngModel)]="rent_price" class="form-control" placeholder="Precio">
+                <input type="number" [(ngModel)]="rent_price" class="form-control" >
                 <label>Precio</label>
             </div>        
             <div class="form-floating mb-2">
-                <select [(ngModel)]="status" class="form-control" placeholder="Estado">
+                <select [(ngModel)]="status" class="form-control">
                     <option value="disponible">Disponible</option>
                     <option value="ocupado">Ocupado</option>
                 </select>
@@ -41,5 +43,5 @@
         </div>
         <a routerLink="/apartments">Volver</a>
     </div>
-    <app-spinner  *ngIf="loading"></app-spinner>
+    <app-spinner *ngIf="loading"></app-spinner>
 </div>
