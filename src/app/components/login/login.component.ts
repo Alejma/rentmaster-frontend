@@ -38,12 +38,13 @@ export class LoginComponent {
     }
     //Creamos el body
     const tenant: Tenant = {
+      tenant_id: 0,
       name: this.name,
       email: this.email,
       password: this.password,
       payment_status: this.payment_status,
       phone_number: this.phone_number
-    }as Omit<Tenant, 'tenant_id'>;
+    }
 
     this.loading=true;
     this._tenantService.login(tenant).subscribe({
