@@ -3,7 +3,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { Apartment } from '../../interfaces/apartment'; // Asegúrate de que esta ruta sea correcta
 import { ApartmentService } from '../../services/apartment.service'; // Asegúrate de que esta ruta sea correcta
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
@@ -21,7 +21,8 @@ export class ApartmentComponent implements OnInit {
 
   constructor(private apartmentService: ApartmentService,
     private confirmationService: ConfirmationService,
-    private messageService: MessageService) {} // Inyectar el servicio de apartamentos
+    private messageService: MessageService,
+    private router: Router) {} // Inyectar el servicio de apartamentos
 
   ngOnInit(): void {
     this.getApartments(); // Llamar al método para obtener los apartamentos al iniciar
@@ -65,6 +66,7 @@ export class ApartmentComponent implements OnInit {
     }
   }
 
-  
+  showInfo(apartment: Apartment) {
+    this.router.navigate(['/info-apartment', { id: apartment.apartment_id }]); 
+  } 
 }
-
