@@ -1,0 +1,106 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <button class="btn-add-contract" routerLink="/new_contract">Agregar Contrato</button>
+
+    <h2>CONTRATOS</h2>
+
+    <!-- Tabla para mostrar los contratos -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID Contrato</th>
+                <th>ID Apartamento</th>
+                <th>Arrendatario</th>
+                <th>Tipo de Contrato</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let contract of contracts">
+                <td>{{ contract.contract_id }}</td>
+                <td>{{ contract.apartment_id }}</td>
+                <td>{{ getTenantName(contract.tenant_id)}}</td>
+                <td>{{ contract.type_contract }}</td>
+                <td>
+                    <button class="btn-square btn-blue" (click)="showInfo(contract)">
+                        <i class="fa fa-eye"></i>
+                    </button>
+<!--                     <button class="btn-square btn-yellow"  (click)="editContract(contract.contract_id)">
+                        <i class="fa fa-pencil"></i>
+                    </button> -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Modal para mostrar la información completa del contrato -->
+    <div class="modal fade" id="contractModal" tabindex="-1" aria-labelledby="contractModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contractModalLabel">Detalles del Contrato</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Sección de detalles del contrato con tarjetas de igual tamaño -->
+                    <div class="row d-flex">
+                        <div class="col-md-6 d-flex">
+                            <div class="card flex-fill mb-3">
+                                <div class="card-header bg-primary text-white">
+                                    <strong>Información General</strong>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>ID Contrato:</strong> {{ selectedContract?.contract_id }}</p>
+                                    <p><strong>Apartamento:</strong> {{ selectedContract?.apartment_id }}</p> <!-- Mostrar el nombre del apartamento -->
+                                    <p><strong>Inquilino:</strong> {{  getTenantName(selectedContract?.tenant_id)  }}</p> <!-- Mostrar el nombre del inquilino -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 d-flex">
+                            <div class="card flex-fill mb-3">
+                                <div class="card-header bg-primary text-white">
+                                    <strong>Detalles del Pago</strong>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Monto:</strong> ${{ selectedContract?.amount }}</p>
+                                    <p><strong>Garantía:</strong> ${{ selectedContract?.warranty }}</p>
+                                    <p><strong>Método de Pago:</strong> {{ selectedContract?.payment_Method }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Segunda fila -->
+                    <div class="row d-flex">
+                        <div class="col-md-6 d-flex">
+                            <div class="card flex-fill mb-3">
+                                <div class="card-header bg-primary text-white">
+                                    <strong>Fechas del Contrato</strong>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Fecha de Firma:</strong> {{ selectedContract?.signed_date }}</p>
+                                    <p><strong>Fecha de Inicio:</strong> {{ selectedContract?.start_date }}</p>
+                                    <p><strong>Fecha de Fin:</strong> {{ selectedContract?.end_date }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 d-flex">
+                            <div class="card flex-fill mb-3">
+                                <div class="card-header bg-primary text-white">
+                                    <strong>Otros Detalles</strong>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Tipo de Contrato:</strong> {{ selectedContract?.type_contract }}</p>
+                                    <p><strong>Estado:</strong> {{ selectedContract?.status }}</p>
+                                    <p><strong>Términos y Condiciones:</strong> {{ selectedContract?.terms_conditions }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
