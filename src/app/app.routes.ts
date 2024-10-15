@@ -9,6 +9,8 @@ import { NewApartmentComponent } from './components/new-apartment/new-apartment.
 import { not } from 'rxjs/internal/util/not';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { InfoApartmentComponent } from './components/info-apartment/info-apartment.component';
+import { EditApartmentComponent } from './components/edit-apartment/edit-apartment.component';
+//import { EditApartmentComponent } from './components/edit-apartment/edit-apartment.component';
 
 export const routes: Routes = [
     {path:'', redirectTo: 'login', pathMatch:'full'},
@@ -19,6 +21,7 @@ export const routes: Routes = [
     {path: 'apartments', component: ApartmentComponent},
     {path: 'new_apartment', component: NewApartmentComponent},
     {path: 'info-apartment', component: InfoApartmentComponent},
+    {path: 'edit-apartment', component: EditApartmentComponent},
     {path:'**', component: NotFoundComponent}
     // redirectTo: 'login', pathMatch:'full'
 ];

@@ -38,4 +38,13 @@ export class TenantService {
   deleteTenant(id: number): Observable<any> {
     return this.http.delete(`${this.myAppUrl}/${id}`);
   }
+
+  getTenantById(tenantId: number): Observable<Tenant> {
+    const token = localStorage.getItem('token'); // Verifica que guardaste el token
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`, // Enviando el token en el encabezado
+    });
+
+    return this.http.get<Tenant>(`${this.myAppUrl}${this.myApiUrl}`, { headers });
+  }
 }

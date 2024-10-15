@@ -1,0 +1,61 @@
+<div class="wrapper">
+    <div class="body">
+        <img class="logo" src="assets/img/casa1.png" alt="img casa1">
+        <h3>Editar Apartamento</h3>
+        <br>
+        <div class="form-grid">
+            <!-- Nombre del Apartamento -->
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control" [(ngModel)]="apartmentName" placeholder="Nombre del apartamento" name="name">
+                <label>Nombre</label>
+            </div>
+            <!-- Dirección del Apartamento -->
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control" [(ngModel)]="apartmentAddress" placeholder="Dirección del apartamento" name="address">
+                <label>Dirección</label>
+            </div>
+            <!-- Admin ID (Campo deshabilitado) -->
+            <div class="form-floating mb-2">
+                <input type="number" class="form-control" [value]="apartment?.admin_id" placeholder="ID del Administrador" name="admin_id" disabled>
+                <label>Admin</label>
+            </div>
+            <!-- Seleccionar Inquilino (Tenant) -->
+            <div class="form-floating mb-2">
+                <select [(ngModel)]="selectedTenantId" name="tenant" class="form-control" id="tenant">
+                    <option *ngFor="let tenant of tenants" [value]="tenant.tenant_id">
+                      {{ tenant.name }} <!-- Mostrar el nombre del arrendatario -->
+                    </option>
+                </select>
+                <label>Arrendatario</label>
+            </div>
+            <!-- Descripción del Apartamento -->
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control" [(ngModel)]="description" placeholder="Descripción del apartamento" name="description">
+                <label>Descripción</label>
+            </div>
+            <!-- Precio del Apartamento -->
+            <div class="form-floating mb-2">
+                <input type="number" class="form-control" [(ngModel)]="rentPrice" placeholder="Precio del alquiler" name="rent_price">
+                <label>Precio</label>
+            </div>        
+            <!-- Estado del Apartamento -->
+            <div class="form-floating mb-2">
+                <div class="form-floating mb-2">
+                    <select [(ngModel)]="status" class="form-control">
+                        <option value="disponible">Disponible</option>
+                        <option value="ocupado">Ocupado</option>
+                    </select>
+                    <label>Estado</label>
+                </div>
+            </div>    
+        </div> <!-- fin del grid -->
+        
+        <div class="d-grid gap-2 mb-3">
+            <button type="button" (click)="updateApartment()" class="btn btn-primary btn-lg">Actualizar</button>
+        </div>
+        
+        <div class="d-grid gap-2 mb-3">
+            <a routerLink="/apartments">Volver</a>
+        </div>
+    </div>
+</div>

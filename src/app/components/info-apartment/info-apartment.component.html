@@ -17,7 +17,7 @@
                 <label>Admin</label>
             </div>
             <div class="form-floating mb-2">
-                <input type="text" class="form-control" [value]="apartment?.tenant_id" placeholder=" " disabled>
+                <input type="text" class="form-control" [value]="tenantName" placeholder=" " disabled>
                 <label>Arrendatario</label>
             </div>
             <div class="form-floating mb-2">
@@ -34,7 +34,7 @@
             </div>    
         </div> <!-- fin del grid -->
         <div class="d-grid gap-2 mb-3">
-            <a routerlik="/apartments">Volver</a> <!-- Añade una clase para estilo si es necesario -->
+            <a routerLink="/apartments">Volver</a> <!-- Añade una clase para estilo si es necesario -->
         </div>
     </div>
 </div>

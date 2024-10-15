@@ -48,6 +48,22 @@ export class ApartmentService {
     });
     
     return this.http.get<Apartment>(`${this.myAppUrl}${this.myApiUrl}/${apartment_id}`, { headers }); // Agregada la barra '/'
-}
+  }
+
+  // updateApartment(apartment: Apartment): Observable<any> {
+  //   const token = localStorage.getItem('token');
+  //   const headers = new HttpHeaders({
+  //     'Authorization': `Bearer ${token}`
+  //   });
+  //   return this.http.put(`${this.myAppUrl}${this.myApiUrl}`, apartment, { headers });
+  // }
+
+  updateApartment(apartment: Apartment): Observable<Apartment> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put<Apartment>(`${this.myAppUrl}${this.myApiUrl}/${apartment.apartment_id}`, apartment, { headers });
+  }
 
 }
