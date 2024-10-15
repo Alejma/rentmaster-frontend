@@ -1,72 +1,85 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApartmentService } from '../../services/apartment.service';
 import { TenantService } from '../../services/tenant.service'; 
 import { Apartment } from '../../interfaces/apartment';
 import { Tenant } from '../../interfaces/tenant'; 
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
-import { forkJoin } from 'rxjs'; // Importamos forkJoin para sincronizar las solicitudes
+import { forkJoin, of } from 'rxjs'; // Importamos 'of' para manejar errores
+import { catchError } from 'rxjs/operators'; // Importamos 'catchError' para manejar el error
 import { RouterLink } from '@angular/router';
+import { TenantHistory } from '../../interfaces/tenant-history';
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-info-apartment',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, CommonModule],
   templateUrl: './info-apartment.component.html',
   styleUrls: ['./info-apartment.component.css']
 })
 export class InfoApartmentComponent implements OnInit {
-  apartment: Apartment | null = null; 
-  tenantName: string | null = null; // Para almacenar el nombre del arrendatario
-
-  tenants: Tenant[] = []; 
+  apartment: Apartment | null = null;
+  tenantName: string | null = null;
+  tenants: Tenant[] = [];
   loading: boolean = false;
+  tenantHistory: TenantHistory[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private toastr: ToastrService,
     private apartmentService: ApartmentService,
-    private _tenantService: TenantService,
-    private cdr: ChangeDetectorRef 
+    private tenantService: TenantService,
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     const apartmentId = +this.route.snapshot.paramMap.get('id')!;
-    this.loadApartmentAndTenants(apartmentId); // Cargar los datos al inicializar el componente
+    this.loadApartmentAndTenants(apartmentId);
   }
 
-  // Método para cargar tanto los tenants como el apartamento usando forkJoin
   loadApartmentAndTenants(apartmentId: number): void {
     this.loading = true;
 
-    // Usamos forkJoin para cargar tanto los tenants como el apartamento al mismo tiempo
     forkJoin({
-      tenants: this._tenantService.getTenants(), // Obtener lista de tenants
-      apartment: this.apartmentService.getApartmentById(apartmentId) // Obtener apartamento por ID
+      tenants: this.tenantService.getTenants(),
+      apartment: this.apartmentService.getApartmentById(apartmentId),
+      tenantHistory: this.tenantService.getTenantHistory(apartmentId).pipe(
+        catchError(() => of([])) // Si falla la carga del historial, devolvemos un array vacío
+      )
     }).subscribe(
       (result) => {
-        this.tenants = result.tenants; // Asignamos los tenants
-        this.apartment = result.apartment; // Asignamos el apartamento
+        console.log('Resultados obtenidos:', result); // Log de resultados
+
+        this.tenants = result.tenants;
+        this.apartment = result.apartment;
+        this.tenantHistory = result.tenantHistory;
 
         // Después de cargar todo, buscamos el nombre del tenant
         this.setTenantName(this.apartment.tenant_id);
-
         this.loading = false;
       },
       (error: HttpErrorResponse) => {
         this.loading = false;
+        console.error('Error detallado:', error); // Log de error
         this.toastr.error('Error al cargar los datos', 'Error');
       }
     );
   }
 
-  // Método para establecer el nombre del tenant basado en su ID
   setTenantName(tenantId: number | null): void {
     if (tenantId !== null) {
-      const tenant = this.tenants.find(t => t.tenant_id === tenantId); // Busca el tenant por ID
-      this.tenantName = tenant ? tenant.name : 'No disponible'; // Asigna el nombre o 'No disponible'
+      const tenant = this.tenants.find(t => t.tenant_id === tenantId);
+      this.tenantName = tenant ? tenant.name : 'No disponible';
     } else {
-      this.tenantName = 'No disponible'; // Si no hay tenantId, asigna 'No disponible'
+      this.tenantName = 'No disponible';
     }
+  }
+
+  getTenantNameById(tenantId: number): string {
+    const tenant = this.tenants.find(t => t.tenant_id === tenantId);
+    return tenant ? tenant.name : 'Desconocido';
   }
 }

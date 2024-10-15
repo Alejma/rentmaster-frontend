@@ -1,5 +1,5 @@
-import { HttpClient , HttpHeaders} from '@angular/common/http';
-import { Injectable }from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Tenant } from '../interfaces/tenant';
 import { Observable } from 'rxjs';
 
@@ -16,13 +16,12 @@ export class TenantService {
   }
 
   getTenants(): Observable<Tenant[]> {
-    const token = localStorage.getItem('token'); // Verifica que guardaste el token
+    const token = localStorage.getItem('token'); 
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`, // Enviando el token en el encabezado
+      'Authorization': `Bearer ${token}`, 
     });
   
     return this.http.get<Tenant[]>(`${this.myAppUrl}${this.myApiUrl}`, { headers });
-    //return this.http.get<Tenant[]>(`${this.myAppUrl}${this.myApiUrl}`);
   }
 
   // Registrar un nuevo Tenant
@@ -36,15 +35,34 @@ export class TenantService {
   }
 
   deleteTenant(id: number): Observable<any> {
-    return this.http.delete(`${this.myAppUrl}/${id}`);
+    return this.http.delete(`${this.myAppUrl}${this.myApiUrl}/${id}`); // Corrige esta línea para que use myApiUrl
   }
 
   getTenantById(tenantId: number): Observable<Tenant> {
-    const token = localStorage.getItem('token'); // Verifica que guardaste el token
+    const token = localStorage.getItem('token'); 
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`, // Enviando el token en el encabezado
+      'Authorization': `Bearer ${token}`, 
     });
 
-    return this.http.get<Tenant>(`${this.myAppUrl}${this.myApiUrl}`, { headers });
+    return this.http.get<Tenant>(`${this.myAppUrl}${this.myApiUrl}${tenantId}`, { headers }); // Asegúrate de que la URL sea correcta
+  }
+
+  getTenantHistory(apartment_id: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  
+    return this.http.get<any>(`${this.myAppUrl}/api/tenantHistory/apartments/${apartment_id}`, { headers }); // Asegúrate de la ruta correcta
+  }
+  
+
+  updateApartmentHistory(apartmentId: number, tenantId: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.put(`${this.myAppUrl}/api/apartmentHistory/apartments/${apartmentId}`, { tenant_id: tenantId }, { headers });
   }
 }

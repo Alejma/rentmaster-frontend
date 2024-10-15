@@ -65,5 +65,4 @@ export class ApartmentService {
     });
     return this.http.put<Apartment>(`${this.myAppUrl}${this.myApiUrl}/${apartment.apartment_id}`, apartment, { headers });
   }
-
 }

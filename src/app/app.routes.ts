@@ -10,7 +10,7 @@ import { not } from 'rxjs/internal/util/not';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { InfoApartmentComponent } from './components/info-apartment/info-apartment.component';
 import { EditApartmentComponent } from './components/edit-apartment/edit-apartment.component';
-//import { EditApartmentComponent } from './components/edit-apartment/edit-apartment.component';
+
 
 export const routes: Routes = [
     {path:'', redirectTo: 'login', pathMatch:'full'},

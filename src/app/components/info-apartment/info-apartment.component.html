@@ -1,6 +1,5 @@
 <div class="wrapper">
     <div class="body">
-        <img class="logo" src="assets/img/casa1.png" alt="img casa1">
         <h3>Información del Apartamento</h3>
         <br>
         <div class="form-grid">
@@ -31,8 +30,27 @@
             <div class="form-floating mb-2">
                 <input type="text" class="form-control" [value]="apartment?.status" placeholder=" " disabled>
                 <label>Estado</label>
-            </div>    
+            </div>           
         </div> <!-- fin del grid -->
+        <br>
+        <div class="form-grid">
+            <table *ngIf="tenantHistory.length > 0" class="history-table">
+                <thead>
+                    <tr>
+                        <th>Historial de arrendatarios</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let history of tenantHistory">
+                        <td>{{ getTenantNameById(history.tenant_id) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Muestra este mensaje si no hay historial -->
+            <div *ngIf="tenantHistory.length === 0">
+                <p>No hay historial de arrendatarios disponible para este apartamento.</p>
+            </div>
+        </div>
         <div class="d-grid gap-2 mb-3">
             <a routerLink="/apartments">Volver</a> <!-- Añade una clase para estilo si es necesario -->
         </div>

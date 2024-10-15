@@ -6,11 +6,10 @@ import { Apartment } from '../../interfaces/apartment';
 import { Tenant } from '../../interfaces/tenant'; 
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
-import { forkJoin } from 'rxjs'; // Importamos forkJoin para sincronizar las solicitudes
+import { forkJoin } from 'rxjs'; 
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
 
 @Component({
   selector: 'app-edit-apartment',
@@ -21,15 +20,12 @@ import { CommonModule } from '@angular/common';
 })
 export class EditApartmentComponent implements OnInit {
   apartment: Apartment | null = null;
-
-  // Variables para almacenar los valores editables del formulario
   apartmentName: string = '';
   apartmentAddress: string = '';
   rentPrice: number = 0;
   selectedTenantId: number = 0;
   description: string = '';
-  status: string = ''; // Inicializa el estado
-
+  status: string = '';
   tenants: Tenant[] = [];
   loading: boolean = false;
 
@@ -56,15 +52,12 @@ export class EditApartmentComponent implements OnInit {
       (result) => {
         this.tenants = result.tenants;
         this.apartment = result.apartment;
-
-        // Inicializar los campos del formulario con los valores actuales del apartamento
         this.apartmentName = this.apartment.name;
         this.apartmentAddress = this.apartment.address;
         this.rentPrice = this.apartment.rent_price;
         this.selectedTenantId = this.apartment.tenant_id;
         this.description = this.apartment.description || '';
-        this.status = this.apartment.status || 'disponible'; // Inicializar el estado con el valor actual
-
+        this.status = this.apartment.status || 'disponible';
         this.loading = false;
       },
       (error: HttpErrorResponse) => {
@@ -76,7 +69,7 @@ export class EditApartmentComponent implements OnInit {
 
   updateApartment(): void {
     if (!this.apartment) {
-      return;
+      return; // Salimos si el apartamento es null
     }
 
     const updatedApartment: Apartment = {
@@ -86,16 +79,29 @@ export class EditApartmentComponent implements OnInit {
       rent_price: this.rentPrice,
       tenant_id: this.selectedTenantId,
       description: this.description,
-      status: this.status // Actualizamos el estado
+      status: this.status
     };
 
     this.loading = true;
 
+    // Actualiza el apartamento
     this.apartmentService.updateApartment(updatedApartment).subscribe(
       () => {
-        this.loading = false;
-        this.toastr.success('El apartamento ha sido actualizado con éxito.', 'Actualización exitosa');
-        this.router.navigate(['/apartments']);
+        // Verificamos que this.apartment no sea null antes de llamar a updateApartmentHistory
+        if (this.apartment) {
+          // Actualiza el historial del apartamento
+          this.tenantService.updateApartmentHistory(this.apartment.apartment_id, this.selectedTenantId).subscribe(
+            () => {
+              this.loading = false;
+              this.toastr.success('El apartamento y su historial han sido actualizados con éxito.', 'Actualización exitosa');
+              this.router.navigate(['/apartments']);
+            },
+            (error: HttpErrorResponse) => {
+              this.loading = false;
+              this.toastr.error('Error al actualizar el historial del apartamento', 'Error');
+            }
+          );
+        }
       },
       (error: HttpErrorResponse) => {
         this.loading = false;
