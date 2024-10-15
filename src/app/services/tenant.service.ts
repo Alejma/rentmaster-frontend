@@ -53,4 +53,7 @@ export class TenantService {
     console.log('Datos a actualizar:', tenant);
     return this.http.put<any>(`${this.myAppUrl}${this.myApiUrl}${id}`, tenant, { headers });
   }
+  getTenantById(id: number): Observable<Tenant> {
+    return this.http.get<Tenant>(`${this.myAppUrl}${this.myApiUrl}${id}`);
+  }
 }

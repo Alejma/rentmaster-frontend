@@ -1,11 +1,11 @@
-<!-- tenant.component.html -->
+<!-- src/app/components/tenant/tenant.component.html -->
 <app-navbar></app-navbar>
 <div class="container">
-    
     <button class="btn-add-tenant" routerLink="/signIn">
         <i class="fa fa-user-plus"></i>
         Agregar Arrendatario
     </button>
+    <a routerLink= "/dashboard">Volver</a>
 
     <h2>ARRENDATARIOS</h2>
     <table class="tenant-table">
@@ -37,8 +37,8 @@
 
     <div *ngIf="successMessage" class="alert alert-success">
         {{ successMessage }}
-      </div>
-      <div *ngIf="errorMessage" class="alert alert-danger">
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
         {{ errorMessage }}
     </div>
 

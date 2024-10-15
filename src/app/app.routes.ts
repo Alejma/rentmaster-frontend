@@ -16,6 +16,7 @@ export const routes: Routes = [
     {path:'signIn', component: SignInComponent},
     {path:'dashboard', component: DashboardComponent},
     {path: 'tenants', component: TenantComponent },
+    {path: 'tenants/:id/edit', component: TenantComponent },
     {path: 'apartments', component: ApartmentComponent},
     {path: 'new_apartment', component: NewApartmentComponent},
     {path: 'info-apartment', component: InfoApartmentComponent},

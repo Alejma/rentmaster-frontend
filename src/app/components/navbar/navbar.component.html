@@ -1,4 +1,7 @@
+<!-- src/app/components/navbar/navbar.component.html -->
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <nav class="navbar navbar-expand-lg bg-dark-blue">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/dashboard">RentMaster</a>
@@ -7,25 +10,24 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto justify-content-center">          
-            <li class="nav-item">
-                <a class="nav-link btn btn-nav" routerLink="/apartments">Apartamentos</a>
+        <ul class="navbar-nav ms-auto align-items-center">
+            <!-- Autocompletar solo visible en la página de arrendatarios -->
+            <li class="nav-item me-3" >
+                <p-autoComplete
+                    [(ngModel)]="selectedTenant"
+                    [suggestions]="filteredTenants"
+                    (completeMethod)="filterTenant($event)"
+                    field="name"
+                    placeholder="Buscar Arrendatario"
+                    (onSelect)="onTenantSelect($event)"
+                    [dropdown]="true"
+                    [style.width.px]="300"> <!-- Usar vinculación de propiedades -->
+                </p-autoComplete>
             </li>
+            <!-- Botón de cierre de sesión -->
             <li class="nav-item">
-                <a class="nav-link btn btn-nav" routerLink="/tenants">Arrendatarios</a>
-            </li>           
-            <li class="nav-item">
-                <a class="nav-link btn btn-nav" routerLink="/contratos">Contratos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link btn btn-nav" routerLink="/tickets">Tickets</a>
-            </li>
-        </ul>
-        
-        <ul class="navbar-nav ms-auto align-items-left">
-            <li class="nav-item">
-                <a class="nav-link">
-                    <i class="fa fa-sign-out " style="font-size:48px;color:rgb(255, 255, 255)" routerLink="/login"></i>
+                <a class="nav-link" routerLink="/login">
+                    <i class="fa fa-sign-out" style="font-size:24px;color:rgb(255, 255, 255)"></i>
                 </a>
             </li>
         </ul>
