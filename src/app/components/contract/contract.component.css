@@ -1,0 +1,100 @@
+.btn-add-contract {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #2ecc71; /* Color del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    font-size: 18px; /* Tamaño de la fuente */
+    font-weight: bold; /* Peso de la fuente */
+    text-align: center; /* Alineación del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 20px; /* Margen inferior */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+.btn-add-contract:hover {
+    background-color: #27ae60; /* Color más oscuro al pasar el mouse */
+}
+
+.container {
+    max-width: 800px; /* Ancho máximo */
+    margin: 50px auto; /* Margen superior e inferior */
+    background-color: #fff; /* Color de fondo */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra */
+    padding: 20px; /* Relleno interno */
+}
+
+/* Título */
+.container h2 {
+    text-align: center; /* Alineación centrada */
+    color: #2c3e50; /* Color del texto */
+    font-size: 28px; /* Tamaño de la fuente */
+    margin-bottom: 20px; /* Margen inferior */
+    border-bottom: 2px solid #2980b9; /* Línea inferior */
+    padding-bottom: 10px; /* Relleno inferior */
+}
+.button-container {
+    display: flex; /* Uso de flexbox para disposición */
+    justify-content: space-between; /* Espaciado entre botones */
+    margin-top: 10px; /* Margen superior */
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-striped tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-square {
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.btn-blue {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-yellow {
+    background-color: #ffc107;
+    color: white;
+}
+
+.btn-red {
+    background-color: #dc3545;
+    color: white;
+}
+
+.modal-body p {
+    margin-bottom: 8px;
+}
+
+.card-header {
+    font-size: 20px;
+}
+
+.card-body p {
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
