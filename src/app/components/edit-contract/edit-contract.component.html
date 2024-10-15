@@ -1,0 +1,99 @@
+<div class="wrapper">
+    <div *ngIf="!loading" class="body">
+        <img class="logo" src="assets/img/casa1.png" alt="img casa1">
+        <h3>Editar Contrato</h3>
+        <br>
+        <div class="form-grid">
+            <!-- Selección del Apartamento -->
+            <div class="form-floating mb-2">
+                <select [(ngModel)]="selectedApartmentId" class="form-control">
+                    <option *ngFor="let apartment of apartments" [value]="apartment.apartment_id">{{ apartment.apartment_id }}</option>
+                </select>
+                <label>Apartamento</label>
+            </div>
+
+            <!-- Selección del Inquilino -->
+            <div class="form-floating mb-2">
+                <select [(ngModel)]="selectedTenantId" class="form-control">
+                    <option *ngFor="let tenant of tenants" [value]="tenant.tenant_id">{{ tenant.name }}</option>
+                </select>
+                <label>Inquilino</label>
+            </div>
+
+            <!-- Monto del Contrato -->
+            <div class="form-floating mb-2">
+                <input type="number" [(ngModel)]="amount" class="form-control">
+                <label>Monto</label>
+            </div>
+
+            <!-- Garantía del Contrato -->
+            <div class="form-floating mb-2">
+                <input type="number" [(ngModel)]="warranty" class="form-control">
+                <label>Garantía</label>
+            </div>
+
+            <!-- Tipo de Contrato -->
+            <div class="form-floating mb-2">
+                <select [(ngModel)]="typeContract" class="form-control">
+                    <option value="Alquiler a largo plazo">Alquiler a largo plazo</option>
+                    <option value="Alquiler temporal">Alquiler temporal</option>
+                    <option value="Venta">Venta</option>
+                    <option value="Leasing">Leasing</option>
+                    <option value="Alquiler con opción a compra">Alquiler con opción a compra</option>
+                </select>
+                <label>Tipo de Contrato</label>
+            </div>
+
+            <!-- Método de Pago -->
+            <div class="form-floating mb-2">
+                <select [(ngModel)]="paymentMethod" class="form-control">
+                    <option value="Transferencia bancaria">Transferencia bancaria</option>
+                    <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+                    <option value="Efectivo">Efectivo</option>
+                    <option value="Paypal">Paypal</option>
+                    <option value="Cheque">Cheque</option>
+                </select>
+                <label>Método de Pago</label>
+            </div>
+
+            <!-- Estado -->
+            <div class="form-floating mb-2">
+                <select [(ngModel)]="status" class="form-control">
+                    <option value="activo">Activo</option>
+                    <option value="inactivo">Inactivo</option>
+                </select>
+                <label>Estado</label>
+            </div>
+
+            <!-- Fechas -->
+            <div class="form-floating mb-2">
+                <input type="date" [(ngModel)]="signedDate" class="form-control">
+                <label>Fecha de Firma</label>
+            </div>
+            <div class="form-floating mb-2">
+                <input type="date" [(ngModel)]="startDate" class="form-control">
+                <label>Fecha de Inicio</label>
+            </div>
+            <div class="form-floating mb-2">
+                <input type="date" [(ngModel)]="endDate" class="form-control">
+                <label>Fecha de Fin</label>
+            </div>
+
+            <!-- Términos y Condiciones -->
+            <div class="form-floating mb-2">
+                <textarea [(ngModel)]="termsConditions" class="form-control" style="height: 100px;"></textarea>
+                <label>Términos y Condiciones</label>
+            </div>
+        </div>
+
+        <!-- Botón para actualizar el contrato -->
+        <div class="d-grid gap-2 mb-3">
+            <button type="button" (click)="updateContract()" class="btn btn-primary btn-lg">Actualizar Contrato</button>
+        </div>
+        
+        <a routerLink="/contracts">Volver</a>
+    </div>
+    
+    <!-- Spinner de carga -->
+</div>
+

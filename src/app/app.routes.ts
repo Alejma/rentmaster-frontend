@@ -10,6 +10,9 @@ import { not } from 'rxjs/internal/util/not';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { InfoApartmentComponent } from './components/info-apartment/info-apartment.component';
 import { EditApartmentComponent } from './components/edit-apartment/edit-apartment.component';
+import { ContractComponent } from './components/contract/contract.component';
+import { NewContractComponent } from './components/new-contract/new-contract.component';
+import { EditContractComponent } from './components/edit-contract/edit-contract.component';
 
 
 export const routes: Routes = [
@@ -19,9 +22,12 @@ export const routes: Routes = [
     {path:'dashboard', component: DashboardComponent},
     {path: 'tenants', component: TenantComponent },
     {path: 'apartments', component: ApartmentComponent},
+    {path: 'contracts', component: ContractComponent},
     {path: 'new_apartment', component: NewApartmentComponent},
     {path: 'info-apartment', component: InfoApartmentComponent},
     {path: 'edit-apartment', component: EditApartmentComponent},
+    {path: 'new_contract', component: NewContractComponent},
+    {path: 'edit_contract/:id', component: EditContractComponent},
     {path:'**', component: NotFoundComponent}
     // redirectTo: 'login', pathMatch:'full'
 ];
