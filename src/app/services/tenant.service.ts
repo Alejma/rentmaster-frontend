@@ -16,9 +16,9 @@ export class TenantService {
   }
 
   getTenants(): Observable<Tenant[]> {
-    const token = localStorage.getItem('token'); // Verifica que guardaste el token
+    const token = localStorage.getItem('token'); 
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`, // Enviando el token en el encabezado
+      'Authorization': `Bearer ${token}`, 
     });
   
     return this.http.get<Tenant[]>(`${this.myAppUrl}${this.myApiUrl}`, { headers });
@@ -33,6 +33,7 @@ export class TenantService {
   login(tenant: Tenant): Observable<string> {
     return this.http.post<string>(`${this.myAppUrl}${this.myApiUrl}/login`, tenant);
   }
+
 
   deleteTenant(id: number): Observable<any> { // Cambiar a any
     const token = localStorage.getItem('token'); // Verifica que guardaste el token
@@ -53,7 +54,34 @@ export class TenantService {
     console.log('Datos a actualizar:', tenant);
     return this.http.put<any>(`${this.myAppUrl}${this.myApiUrl}${id}`, tenant, { headers });
   }
-  getTenantById(id: number): Observable<Tenant> {
-    return this.http.get<Tenant>(`${this.myAppUrl}${this.myApiUrl}${id}`);
+
+
+  getTenantById(tenantId: number): Observable<Tenant> {
+    const token = localStorage.getItem('token'); 
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`, 
+    });
+
+    return this.http.get<Tenant>(`${this.myAppUrl}${this.myApiUrl}${tenantId}`, { headers }); // Asegúrate de que la URL sea correcta
+  }
+
+  getTenantHistory(apartment_id: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  
+    return this.http.get<any>(`${this.myAppUrl}/api/tenantHistory/apartments/${apartment_id}`, { headers }); // Asegúrate de la ruta correcta
+  }
+  
+
+  updateApartmentHistory(apartmentId: number, tenantId: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.put(`${this.myAppUrl}/api/apartmentHistory/apartments/${apartmentId}`, { tenant_id: tenantId }, { headers });
+
   }
 }

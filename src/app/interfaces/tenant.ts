@@ -6,3 +6,4 @@ export interface Tenant{
     payment_status: string,
     phone_number: string,
 }
+

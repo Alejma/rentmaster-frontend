@@ -67,6 +67,13 @@ export class ApartmentComponent implements OnInit {
   }
 
   showInfo(apartment: Apartment) {
+
+    console.log('Información del apartamento: ' + apartment.apartment_id + "\nnombre: " + apartment.name); // Muestra la información del apartamento en la consola
     this.router.navigate(['/info-apartment', { id: apartment.apartment_id }]); 
-  } 
+  }
+
+  editApartment(apartment: Apartment)  {
+    this.router.navigate(['/edit-apartment', { id: apartment.apartment_id }]); 
+  }
+
 }

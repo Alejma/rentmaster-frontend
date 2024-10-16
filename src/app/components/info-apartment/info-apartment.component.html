@@ -1,11 +1,16 @@
-<p>info-apartment works!</p>
+
 <div class="wrapper">
     <div class="body">
         <img class="logo" src="assets/img/casa1.png" alt="img casa1">
+
+<div class="wrapper">
+    <div class="body">
+
         <h3>Información del Apartamento</h3>
         <br>
         <div class="form-grid">
             <div class="form-floating mb-2">
+              
                 <input type="text" class="form-control" placeholder=" " disabled>
                 <label>Nombre</label>
             </div>
@@ -36,6 +41,59 @@
         </div> <!-- fin del grid -->
         <div class="d-grid gap-2 mb-3">
             <a routerLink="/apartments">Volver</a>
+        </div>
+    </div>
+</div>
+=======
+                <input type="text" class="form-control" [value]="apartment?.name" placeholder="" disabled>
+                <label>Nombre</label>
+            </div>
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control" [value]="apartment?.address" placeholder="" disabled>
+                <label>Dirección</label>
+            </div>
+            <div class="form-floating mb-2">
+                <input type="number" class="form-control" [value]="apartment?.admin_id" placeholder=" " disabled>
+                <label>Admin</label>
+            </div>
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control" [value]="tenantName" placeholder=" " disabled>
+                <label>Arrendatario</label>
+            </div>
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control" [value]="apartment?.description" placeholder=" " disabled>
+                <label>Descripción</label>
+            </div>
+            <div class="form-floating mb-2">
+                <input type="number" class="form-control" [value]="apartment?.rent_price" placeholder=" " disabled>
+                <label>Precio</label>
+            </div>        
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control" [value]="apartment?.status" placeholder=" " disabled>
+                <label>Estado</label>
+            </div>           
+        </div> <!-- fin del grid -->
+        <br>
+        <div class="form-grid">
+            <table *ngIf="tenantHistory.length > 0" class="history-table">
+                <thead>
+                    <tr>
+                        <th>Historial de arrendatarios</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let history of tenantHistory">
+                        <td>{{ getTenantNameById(history.tenant_id) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Muestra este mensaje si no hay historial -->
+            <div *ngIf="tenantHistory.length === 0">
+                <p>No hay historial de arrendatarios disponible para este apartamento.</p>
+            </div>
+        </div>
+        <div class="d-grid gap-2 mb-3">
+            <a routerLink="/apartments">Volver</a> <!-- Añade una clase para estilo si es necesario -->
         </div>
     </div>
 </div>
