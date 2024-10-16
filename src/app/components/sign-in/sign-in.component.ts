@@ -42,6 +42,7 @@ export class SignInComponent {
     }
     //Creacion del body
     const tenant:Tenant = {
+      tenant_id: 0,
       name: this.name,
       email: this.email,
       password: this.password,

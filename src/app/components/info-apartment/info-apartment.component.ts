@@ -1,3 +1,6 @@
+
+import { Component } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApartmentService } from '../../services/apartment.service';
@@ -11,6 +14,7 @@ import { catchError } from 'rxjs/operators'; // Importamos 'catchError' para man
 import { RouterLink } from '@angular/router';
 import { TenantHistory } from '../../interfaces/tenant-history';
 import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-info-apartment',
@@ -83,3 +87,4 @@ export class InfoApartmentComponent implements OnInit {
     return tenant ? tenant.name : 'Desconocido';
   }
 }
+

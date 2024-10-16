@@ -21,6 +21,7 @@ export const routes: Routes = [
     {path:'signIn', component: SignInComponent},
     {path:'dashboard', component: DashboardComponent},
     {path: 'tenants', component: TenantComponent },
+    {path: 'tenants/:id/edit', component: TenantComponent },
     {path: 'apartments', component: ApartmentComponent},
     {path: 'contracts', component: ContractComponent},
     {path: 'new_apartment', component: NewApartmentComponent},
@@ -28,6 +29,7 @@ export const routes: Routes = [
     {path: 'edit-apartment', component: EditApartmentComponent},
     {path: 'new_contract', component: NewContractComponent},
     {path: 'edit_contract/:id', component: EditContractComponent},
+
     {path:'**', component: NotFoundComponent}
     // redirectTo: 'login', pathMatch:'full'
 ];

@@ -27,6 +27,7 @@
     margin-top: 20px;
 }
 
+
 .history-table {
     width: 100%;
     border-collapse: collapse;
@@ -38,6 +39,7 @@
     padding: 15px;
     border-bottom: 1px solid #ddd;
 }
+
 
 @media (min-width: 768px) {
     .body {

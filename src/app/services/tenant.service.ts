@@ -11,7 +11,7 @@ export class TenantService {
   private myApiUrl: string;
 
   constructor(private http: HttpClient) { 
-    this.myAppUrl = 'https://rentmaster-api.onrender.com'; 
+    this.myAppUrl = 'http://localhost:3001'; 
     this.myApiUrl = '/api/tenants/'; 
   }
 
@@ -34,9 +34,27 @@ export class TenantService {
     return this.http.post<string>(`${this.myAppUrl}${this.myApiUrl}/login`, tenant);
   }
 
-  deleteTenant(id: number): Observable<any> {
-    return this.http.delete(`${this.myAppUrl}${this.myApiUrl}/${id}`); // Corrige esta línea para que use myApiUrl
+
+  deleteTenant(id: number): Observable<any> { // Cambiar a any
+    const token = localStorage.getItem('token'); // Verifica que guardaste el token
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`, // Enviando el token en el encabezado
+    });
+    return this.http.delete<any>(`${this.myAppUrl}${this.myApiUrl}${id}`, { headers }); // Cambiar a any
   }
+
+  updateTenant(id: number, tenant: Tenant): Observable<any> { // Cambiar a any para manejar la respuesta
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+    console.log(`PUT URL: ${this.myAppUrl}${this.myApiUrl}${id}`);
+    console.log(`Authorization Header: Bearer ${token}`);
+    console.log('Datos a actualizar:', tenant);
+    return this.http.put<any>(`${this.myAppUrl}${this.myApiUrl}${id}`, tenant, { headers });
+  }
+
 
   getTenantById(tenantId: number): Observable<Tenant> {
     const token = localStorage.getItem('token'); 
@@ -64,5 +82,6 @@ export class TenantService {
     });
 
     return this.http.put(`${this.myAppUrl}/api/apartmentHistory/apartments/${apartmentId}`, { tenant_id: tenantId }, { headers });
+
   }
 }
