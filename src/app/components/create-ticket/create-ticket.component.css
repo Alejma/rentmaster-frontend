@@ -1,0 +1,53 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+  }
+
+  .left-image {
+    max-width: 80%;
+    
+    margin-bottom: 20px;
+}
+  
+  .ticket-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0d395e;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #c5c5c5;
+    font-size: 1rem;
+  }
+  
+  .btn-save, .btn-cancel {
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  

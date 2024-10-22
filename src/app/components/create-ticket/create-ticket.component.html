@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <div *ngIf="!loading" class="body">
+    <img src="assets/img/ayuda.png" alt="Imagen de Ayuda" class="left-image">
+      <h3>Enviar Ticket</h3>
+      <div class="form-floating mb-2 mt-3">
+          <input type="number" [(ngModel)]="ticketData.tenant_id" class="form-control" placeholder="ID de Arrendatario">
+          <label>ID de Arrendatario</label>
+      </div>
+      <div class="form-floating mb-2">
+          <input type="number" [(ngModel)]="ticketData.apartment_id" class="form-control" placeholder="ID del Apartamento">
+          <label>ID del Apartamento</label>
+      </div>
+      <div class="form-floating mb-2">
+          <input type="text" [(ngModel)]="ticketData.subject" class="form-control" placeholder="Asunto">
+          <label>Asunto</label>
+      </div>
+      <div class="form-floating mb-2">
+          <textarea [(ngModel)]="ticketData.description" class="form-control" placeholder="Descripción" rows="3"></textarea>
+          <label>Descripción</label>
+      </div>
+      <div class="form-floating mb-2">
+          <select [(ngModel)]="ticketData.status" class="form-control">
+              <option value="pendiente">Pendiente</option>
+              <option value="en proceso">En Proceso</option>
+              <option value="resuelto">Resuelto</option>
+          </select>
+          <label>Estado</label>
+      </div>
+      <div class="d-grid gap-2 mb-3">
+          <button type="button" (click)="createTicket()" class="btn btn-primary btn-lg">Enviar Ticket</button>
+      </div>
+      <a routerLink="/tickets">Volver</a>
+  </div>
+  <app-spinner *ngIf="loading"></app-spinner>
+</div>
