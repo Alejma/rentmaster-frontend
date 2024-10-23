@@ -27,7 +27,8 @@ export class NewApartmentComponent implements OnInit { // Implementar OnInit
   description: string = '';
   rent_price: number = 0;
   name: string = '';
-  
+  formattedRentPrice: string = ''; // Variable para el precio formateado con $
+
   tenants: Tenant[] = []; // Para almacenar la lista de tenants
   loading: boolean = false;
 
@@ -51,6 +52,20 @@ export class NewApartmentComponent implements OnInit { // Implementar OnInit
     });
   }
 
+  formatPrice() {
+    // Eliminar caracteres no numéricos (excepto el punto para decimales)
+    const numericValue = this.formattedRentPrice.replace(/[^0-9.]/g, '');
+
+    // Verificar si el valor numérico es válido antes de asignar
+    if (!isNaN(parseFloat(numericValue)) && numericValue !== '') {
+      this.rent_price = parseFloat(numericValue); // Asignar valor numérico
+      this.formattedRentPrice = `$${numericValue}`; // Actualizar la representación con $
+    } else {
+      this.rent_price = 0; // Asignar 0 si no es un número válido
+      this.formattedRentPrice = ''; // Limpiar el campo si es inválido
+    }
+  }
+
   addApartment() {
     this.loading = true;
 
@@ -60,7 +75,7 @@ export class NewApartmentComponent implements OnInit { // Implementar OnInit
       tenant_id: this.tenant_id,
       address: this.address,
       description: this.description,
-      rent_price: this.rent_price,
+      rent_price: this.rent_price, // Guardar solo el valor numérico
       status: this.status,
       name: this.name
     };

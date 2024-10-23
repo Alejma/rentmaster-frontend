@@ -109,4 +109,12 @@ export class EditApartmentComponent implements OnInit {
       }
     );
   }
+
+  get formattedRentPrice(): string {
+    return `$${this.rentPrice.toFixed(2)}`;
+  }
+
+  updateRentPrice(value: string): void {
+    this.rentPrice = parseFloat(value.replace(/[$,]/g, '')); // Elimina el símbolo $ y convierte a número
+  }
 }

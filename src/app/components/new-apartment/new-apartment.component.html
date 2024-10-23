@@ -13,7 +13,7 @@
                 <label>Dirección</label>
             </div>
             <div class="form-floating mb-2">
-                <input type="number" [(ngModel)]="admin_id" class="form-control" >
+                <input type="number" [(ngModel)]="admin_id" class="form-control">
                 <label>Admin</label>
             </div>
             <div class="form-floating mb-2">
@@ -23,11 +23,11 @@
                 <label>Arrendatario</label>
             </div>
             <div class="form-floating mb-2">
-                <input type="text" [(ngModel)]="description" class="form-control" >
+                <input type="text" [(ngModel)]="description" class="form-control">
                 <label>Descripción</label>
             </div>
             <div class="form-floating mb-2">
-                <input type="number" [(ngModel)]="rent_price" class="form-control" >
+                <input type="text" [(ngModel)]="formattedRentPrice" (input)="formatPrice()" class="form-control">
                 <label>Precio</label>
             </div>        
             <div class="form-floating mb-2">

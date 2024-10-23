@@ -82,4 +82,8 @@ export class InfoApartmentComponent implements OnInit {
     const tenant = this.tenants.find(t => t.tenant_id === tenantId);
     return tenant ? tenant.name : 'Desconocido';
   }
+
+  getFormattedRentPrice(): string {
+    return this.apartment?.rent_price != null ? `$${this.apartment.rent_price.toFixed(2)}` : 'No disponible';
+  }
 }
