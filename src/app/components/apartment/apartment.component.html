@@ -8,7 +8,7 @@
         <div class="apartment-card" *ngFor="let apartment of apartments">
             <h3> {{ apartment.name }}</h3>
             <p><strong>Arrendatario:</strong>  {{ apartment.tenant_id }}</p>
-            <p><strong>Precio:</strong> ${{ apartment.rent_price }}</p>
+            <p><strong>Precio:</strong> {{ apartment.rent_price | currency:'COP':'symbol':'1.0-0':'es-CO' }}</p>
             <div class="button-container">
                 <button class="btn-square btn-blue" (click)="showInfo(apartment)">
                     <i class="fa fa-eye"></i>
