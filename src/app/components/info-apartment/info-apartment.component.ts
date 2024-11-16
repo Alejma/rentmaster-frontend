@@ -1,8 +1,8 @@
 
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { OnInit, ChangeDetectorRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ApartmentService } from '../../services/apartment.service';
 import { TenantService } from '../../services/tenant.service'; 
 import { Apartment } from '../../interfaces/apartment';

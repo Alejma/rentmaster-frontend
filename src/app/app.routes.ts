@@ -13,6 +13,11 @@ import { EditApartmentComponent } from './components/edit-apartment/edit-apartme
 import { ContractComponent } from './components/contract/contract.component';
 import { NewContractComponent } from './components/new-contract/new-contract.component';
 import { EditContractComponent } from './components/edit-contract/edit-contract.component';
+import { TicketsComponent } from './components/tickets/tickets.component';
+import { CreateTicketComponent } from './components/create-ticket/create-ticket.component';
+import { TicketsTenantComponent } from './components/tickets-tenant/tickets-tenant.component';
+import { DashboardTenantComponent } from './components/dashboard-tenant/dashboard-tenant.component';
+
 
 
 export const routes: Routes = [
@@ -21,15 +26,17 @@ export const routes: Routes = [
     {path:'signIn', component: SignInComponent},
     {path:'dashboard', component: DashboardComponent},
     {path: 'tenants', component: TenantComponent },
-    {path: 'tenants/:id/edit', component: TenantComponent },
     {path: 'apartments', component: ApartmentComponent},
     {path: 'contracts', component: ContractComponent},
+    {path: 'tickets', component: TicketsComponent},
+    {path: 'create-ticket', component: CreateTicketComponent},
     {path: 'new_apartment', component: NewApartmentComponent},
     {path: 'info-apartment', component: InfoApartmentComponent},
     {path: 'edit-apartment', component: EditApartmentComponent},
     {path: 'new_contract', component: NewContractComponent},
     {path: 'edit_contract/:id', component: EditContractComponent},
-
+    {path: 'tickets-tenant', component: TicketsTenantComponent},
+    {path: 'dashboard-tenant', component: DashboardTenantComponent},
     {path:'**', component: NotFoundComponent}
     // redirectTo: 'login', pathMatch:'full'
 ];

@@ -7,6 +7,7 @@ import { TenantService } from '../../services/tenant.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SpinnerComponent } from '../../shared/spinner/spinner.component';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -26,11 +27,27 @@ export class LoginComponent {
   loading: boolean=false;
 
   constructor(private toastr: ToastrService,
-    private _tenantService: TenantService,
+    private _authService: AuthService,
     private router: Router
   ){}
 
-  login(){
+  login() {
+    this._authService.login(this.email, this.password).subscribe({
+      next: () => {
+        const role = this._authService.getRole();
+        console.log(role);
+        if (role === 'admin') {
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.router.navigate(['/dashboard-tenant']);
+        }
+      }
+    });
+  }
+}
+
+
+  /*login(){
     //Validamos que el usuario ingrese datos
     if(this.email=='' || this.password==''){
       this.toastr.error('Todos los campos son obligatorios.', 'Error');
@@ -65,4 +82,4 @@ export class LoginComponent {
       this.toastr.error('Upsss! Ocurrio un error inesperado, comuniquese con el administrador.', 'Error');
     }
   }
-}
+}*/
