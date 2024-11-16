@@ -1,33 +1,72 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-    
     <div class="left-section">
-    
-        <div class="welcome-text"  style="text-align: center;" >
+        <div class="welcome-text">
             <img src="assets/img/ayuda.png" alt="Imagen de Ayuda" class="left-image">
-            <h2>¡Bienvenido a la Gestión de Tickets!</h2>
-            <p>Aquí puedes crear y gestionar todos tus tickets de manera sencilla y rápida. Los tickets te permiten reportar cualquier problema o solicitud relacionada con tu apartamento, como reparaciones, mantenimiento o cualquier otra necesidad. A través de esta herramienta, podrás:</p>
+            <h2>¡Bienvenido a la Gestión de Tickets para Administradores!</h2>
+            <p>Aquí puedes gestionar todos los tickets de manera centralizada y eficiente. Esta herramienta te permite supervisar, responder y resolver las solicitudes de los arrendatarios relacionadas con sus apartamentos, como reparaciones, mantenimiento y otras necesidades. A través de esta plataforma, podrás:</p>
             <ul>
-                <li>Crear nuevos tickets para reportar incidencias o solicitudes de soporte.</li>
-                <li>Ver el estado de tus tickets en tiempo real, desde la creación hasta la resolución.</li>
-                <li>Actualizar y añadir comentarios a tus tickets para mantener un seguimiento de los avances.</li>
+                <li>Revisar y gestionar nuevos tickets creados por los arrendatarios para reportar incidencias o solicitudes de soporte.</li>
+                <li>Monitorear el estado de cada ticket en tiempo real, desde la creación hasta su resolución, para asegurar un seguimiento adecuado.</li>
+                <li>Actualizar el progreso de cada ticket, añadir comentarios, y comunicarte con los arrendatarios para informarles sobre los avances y tiempos estimados de solución.</li>
             </ul>
-            <p>Tu satisfacción es nuestra prioridad. ¡Gestiona tus tickets fácilmente desde un solo lugar y mantén todo bajo control!</p>
+            <p>Nos comprometemos a facilitarte una administración eficaz. ¡Mantén todo bajo control y asegura una excelente experiencia para tus arrendatarios desde un solo lugar!</p>
         </div>
     </div>
 
-   
     <div class="right-section">
         <div class="info-box">
-            <button class="btn-add-ticket" routerLink="/create-ticket">
-                <i class="fa fa-ticket-alt"></i> Enviar Ticket
-            </button>
+<!--             <button class="btn-add-ticket" routerLink="/create-ticket">
+                <i class="fa fa-ticket-alt"></i> Crear ticket
+            </button> -->
 
             <div class="ticket-info">
-                <h3>Tus Tickets</h3>
-                <p>Aquí puedes ver todos tus tickets actuales y gestionarlos.</p>
+                <h3>Tickets</h3>
+                <p>Aquí puedes ver todos los tickets actuales y gestionarlos.</p>
+                  <!-- Contadores de tickets por estado -->
+  <div class="ticket-counts">
+    <span class="count-item">
+      <strong>Pendientes:</strong> {{ pendingCount }}
+    </span>
+    <span class="count-item">
+      <strong>En Proceso:</strong> {{ inProgressCount }}
+    </span>
+    <span class="count-item">
+      <strong>Resueltos:</strong> {{ resolvedCount }}
+    </span>
+  </div>
+            </div>
+
+            <div class="ticket-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Arrendatario</th>
+                            <th>Apartamento</th>
+                            <th>Asunto</th>
+                            <th>Descripción</th>
+                            <th>Estado</th>
+                            <th>Cambiar estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let ticket of tickets">
+                            <td>{{ getTenantName(ticket.tenant_id)}}</td>
+                            <td>{{ getApartmentName(ticket.apartment_id) }}</td>
+                            <td>{{ ticket.subject }}</td>
+                            <td>{{ ticket.description }}</td>
+                            <td>{{ ticket.status }}</td>
+                            <td>
+                                <button class="btn btn-pendiente" (click)="changeStatus(ticket, 'Pendiente')" [disabled]="ticket.status === 'Pendiente'">Pendiente</button>
+                                <button class="btn btn-en-proceso" (click)="changeStatus(ticket, 'En Proceso')" [disabled]="ticket.status === 'En Proceso'">En Proceso</button>
+                                <button class="btn btn-resuelto" (click)="changeStatus(ticket, 'Resuelto')" [disabled]="ticket.status === 'Resuelto'">Resuelto</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
+

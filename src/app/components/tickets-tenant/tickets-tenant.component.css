@@ -1,0 +1,100 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.left-section {
+    width: 50%;
+    padding-right: 5px;
+}
+
+.left-image {
+    max-width: 50%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.welcome-text {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+.welcome-text h2 {
+    color: #0d395e;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.right-section {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.info-box {
+    background-color: #e6f2ff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.ticket-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #0d395e;
+}
+
+.ticket-info p {
+    font-size: 1rem;
+    color: #333;
+    gap: 60px;
+}
+
+.btn-add-ticket {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #1a868e;
+    color: white;
+    border: none;
+    font-size: 17px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.btn-add-ticket:hover {
+    background-color: #025271;
+}
+
+.btn-save, .btn-cancel {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-save {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-cancel {
+    background-color: #dc3545;
+    color: white;
+}

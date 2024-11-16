@@ -35,6 +35,7 @@ export class LoginComponent {
     this._authService.login(this.email, this.password).subscribe({
       next: () => {
         const role = this._authService.getRole();
+        console.log(role);
         if (role === 'admin') {
           this.router.navigate(['/dashboard']);
         } else {

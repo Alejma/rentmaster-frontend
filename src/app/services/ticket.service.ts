@@ -87,4 +87,14 @@ export class TicketService {
 
     return this.http.put(`${this.myAppUrl}/api/ticketHistory/apartments/${apartmentId}`, { ticket_id: ticketId }, { headers });
   }
+  
+  updateTicketStatus(ticketId: number, status: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.put<any>(`${this.myAppUrl}${this.myApiUrl}${ticketId}`, { status }, { headers });
+  }
 }

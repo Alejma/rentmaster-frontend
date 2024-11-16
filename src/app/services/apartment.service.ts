@@ -11,7 +11,7 @@ export class ApartmentService {
   private myApiUrl: string;
 
   constructor(private http: HttpClient) { 
-    this.myAppUrl = 'https://rentmaster-api.onrender.com'; 
+    this.myAppUrl = 'http://localhost:3001'; 
     this.myApiUrl = '/api/apartments'; 
   }
 

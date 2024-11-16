@@ -15,6 +15,8 @@ import { NewContractComponent } from './components/new-contract/new-contract.com
 import { EditContractComponent } from './components/edit-contract/edit-contract.component';
 import { TicketsComponent } from './components/tickets/tickets.component';
 import { CreateTicketComponent } from './components/create-ticket/create-ticket.component';
+import { TicketsTenantComponent } from './components/tickets-tenant/tickets-tenant.component';
+import { DashboardTenantComponent } from './components/dashboard-tenant/dashboard-tenant.component';
 
 
 
@@ -33,6 +35,8 @@ export const routes: Routes = [
     {path: 'edit-apartment', component: EditApartmentComponent},
     {path: 'new_contract', component: NewContractComponent},
     {path: 'edit_contract/:id', component: EditContractComponent},
+    {path: 'tickets-tenant', component: TicketsTenantComponent},
+    {path: 'dashboard-tenant', component: DashboardTenantComponent},
     {path:'**', component: NotFoundComponent}
     // redirectTo: 'login', pathMatch:'full'
 ];
