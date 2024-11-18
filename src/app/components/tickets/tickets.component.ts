@@ -22,6 +22,8 @@ export class TicketsComponent {
   tenants: Tenant[] = [];
   apartments: Apartment[] = [];
 
+  // Lista de técnicos para asignar aleatoriamente
+  technicians: string[] = ['Pedro Perez', 'Cosme Fulanito', 'Cristian Gomez', 'Camilo Velez'];
   // Variables para contar los tickets por estado
   pendingCount: number = 0;
   inProgressCount: number = 0;
@@ -43,6 +45,7 @@ export class TicketsComponent {
     this._ticketService.getTickets().subscribe({
       next: (data) => {
         this.tickets = data;
+        //console.log('Tickets:', this.tickets);
         this.updateTicketCounts(); // Actualizar los contadores de tickets
       }
     });
@@ -75,6 +78,27 @@ export class TicketsComponent {
     this.pendingCount = this.tickets.filter(ticket => ticket.status === 'Pendiente').length;
     this.inProgressCount = this.tickets.filter(ticket => ticket.status === 'En Proceso').length;
     this.resolvedCount = this.tickets.filter(ticket => ticket.status === 'Resuelto').length;
+  }
+
+  assignRandomTechnician(ticket: any): void {
+    const randomTechnician = this.technicians[Math.floor(Math.random() * this.technicians.length)];
+    ticket.technician = randomTechnician;
+
+  // Llamada al servicio para actualizar el técnico en el backend
+  this._ticketService.updateTicketTechnician(ticket.ticket_id, randomTechnician).subscribe(
+    (updatedTicket) => {
+      console.log(`Técnico ${randomTechnician} asignado al ticket ${ticket.ticket_id}`);
+
+      // Actualiza el ticket en la lista para que la tabla refleje el cambio
+      const index = this.tickets.findIndex(t => t.ticket_id === ticket.ticket_id);
+      if (index !== -1) {
+        this.tickets[index] = { ...this.tickets[index], technician_name: randomTechnician };
+      }
+    },
+      (error) => {
+        console.error('Error al asignar técnico:', error);
+      }
+    );
   }
 
     // Función que cambia el estado del ticket y actualiza la API

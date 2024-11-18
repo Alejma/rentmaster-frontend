@@ -179,3 +179,26 @@
     color: #002144;  /* Puedes cambiar el color a tu gusto */
   }
   
+  .btn-assign {
+    background-color: #f19336;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .btn-assign:hover {
+    background-color: #b1600f;
+  }
+
+  /* Estilos para el contenedor de botones de acciones */
+.action-group {
+  margin-bottom: 10px; /* Añade espacio debajo del botón de asignación */
+}
+
+.status-group {
+  display: flex;
+  flex-direction: column; /* Muestra los botones de estado en columna */
+  gap: 5px; /* Espacio entre botones */
+}

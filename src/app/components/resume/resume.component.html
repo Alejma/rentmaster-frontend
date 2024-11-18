@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+
+<div class="chart-container">
+    <h2>Información de la Aplicación</h2>
+  
+    <!-- Gráfica de Barras -->
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [title]="chartOptions.title"
+    ></apx-chart>
+  
+    <!-- Gráfica de Tortas (Pie Chart) -->
+    <apx-chart
+      [series]="chartOptionsPie.series"
+      [chart]="chartOptionsPie.chart"
+      [title]="chartOptionsPie.title"
+      [labels]="chartOptionsPie.labels" 
+    ></apx-chart>
+  </div>
+  

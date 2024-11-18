@@ -20,7 +20,8 @@ export class CreateTicketComponent {
     apartment_id: '',
     subject: '',
     description: '',
-    status: ''
+    status: '',
+    technician_name: ''
   };
 
   loading: boolean=false;
@@ -35,7 +36,8 @@ export class CreateTicketComponent {
       apartment_id: parseInt(this.ticketData.apartment_id, 10),  // Convertimos a número
       subject: this.ticketData.subject,
       description: this.ticketData.description,
-      status: this.ticketData.status
+      status: this.ticketData.status,
+      technician_name: this.ticketData.technician_name
     };
 
     // Llamamos al servicio para crear el ticket
@@ -58,7 +60,8 @@ export class CreateTicketComponent {
       apartment_id: '',
       subject: '',
       description: '',
-      status: ''
+      status: '',
+      technician_name: ''
     };
   }
 }

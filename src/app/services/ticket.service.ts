@@ -94,7 +94,17 @@ export class TicketService {
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
     });
-
+    
     return this.http.put<any>(`${this.myAppUrl}${this.myApiUrl}${ticketId}`, { status }, { headers });
+  }
+
+  updateTicketTechnician(ticketId: number, technician: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.put<any>(`${this.myAppUrl}${this.myApiUrl}${ticketId}`, { technician_name: technician }, { headers });
   }
 }

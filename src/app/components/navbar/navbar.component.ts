@@ -23,7 +23,8 @@ export class NavbarComponent implements OnInit {
   filteredTenants: Tenant[] = [];
   selectedTenant: Tenant | null = null;
 
-  constructor(private router: Router, private tenantService: TenantService) {}
+  constructor(private router: Router, private tenantService: TenantService
+  ) {}
 
   ngOnInit(): void {
     this.router.events.pipe(
@@ -63,4 +64,6 @@ export class NavbarComponent implements OnInit {
     // Navegar a la página de edición del arrendatario seleccionado
     this.router.navigate(['/tenants', tenant.tenant_id, 'edit']);
   }
+
+  
 }

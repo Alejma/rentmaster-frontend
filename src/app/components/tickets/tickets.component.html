@@ -47,7 +47,9 @@
                             <th>Asunto</th>
                             <th>Descripción</th>
                             <th>Estado</th>
-                            <th>Cambiar estado</th>
+                            <th>Técnico Asignado</th>
+                            <th>Asignar Técnico</th>
+                            <th>Cambiar Estado</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,11 +59,20 @@
                             <td>{{ ticket.subject }}</td>
                             <td>{{ ticket.description }}</td>
                             <td>{{ ticket.status }}</td>
+                            <td>{{ ticket.technician_name  || "No asignado"}}</td>
+                            
                             <td>
+                                <button class="btn btn-assign" (click)="assignRandomTechnician(ticket)">
+                                    Asignar Técnico</button>
+                              </td>
+          
+                              <td>
                                 <button class="btn btn-pendiente" (click)="changeStatus(ticket, 'Pendiente')" [disabled]="ticket.status === 'Pendiente'">Pendiente</button>
                                 <button class="btn btn-en-proceso" (click)="changeStatus(ticket, 'En Proceso')" [disabled]="ticket.status === 'En Proceso'">En Proceso</button>
                                 <button class="btn btn-resuelto" (click)="changeStatus(ticket, 'Resuelto')" [disabled]="ticket.status === 'Resuelto'">Resuelto</button>
-                            </td>
+                              </td>
+
+                            
                         </tr>
                     </tbody>
                 </table>

@@ -11,22 +11,36 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-
-        <ul class="navbar-nav ms-auto align-items-center">
-            <!-- Autocompletar solo visible en la página de arrendatarios -->
-            <li class="nav-item me-3" >
-                <p-autoComplete
-                    [(ngModel)]="selectedTenant"
-                    [suggestions]="filteredTenants"
-                    (completeMethod)="filterTenant($event)"
-                    field="name"
-                    placeholder="Buscar Arrendatario"
-                    (onSelect)="onTenantSelect($event)"
-                    [dropdown]="true"
-                    [style.width.px]="300"> <!-- Usar vinculación de propiedades -->
-                </p-autoComplete>
+        <ul class="navbar-nav ms-auto justify-content-center">          
+            <li class="nav-item">
+                <a class="nav-link btn btn-nav" routerLink="/apartments">
+                    <i class="bi bi-building"></i> Apartamentos
+                </a>
             </li>
-            <!-- Botón de cierre de sesión -->
+            <li class="nav-item">
+                <a class="nav-link btn btn-nav" routerLink="/tenants">
+                    <i class="bi bi-people"></i> Arrendatarios
+                </a>
+            </li>           
+            <li class="nav-item">
+                <a class="nav-link btn btn-nav" routerLink="/contracts">
+                    <i class="bi bi-file-earmark-text"></i> Contratos
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-nav" routerLink="/tickets">
+                    <i class="bi bi-ticket"></i> Tickets
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-nav" routerLink="/resume">
+                    <i class="bi bi-bar-chart"></i> Estadísticas
+                </a>
+            </li>
+        </ul>
+        
+        <ul class="navbar-nav ms-auto align-items-center">     
+            <!-- Botón de cierre de sesión -->         
             <li class="nav-item">
                 <a class="nav-link" routerLink="/login">
                     <i class="fa fa-sign-out" style="font-size:24px;color:rgb(255, 255, 255)"></i>
