@@ -12,13 +12,13 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-edit-apartment',
+  selector: 'app-update-tenant',
   standalone: true,
   imports: [RouterLink, FormsModule, CommonModule],
-  templateUrl: './edit-apartment.component.html',
-  styleUrls: ['./edit-apartment.component.css']
+  templateUrl: './update-tenant.component.html',
+  styleUrls: ['./update-tenant.component.css']
 })
-export class EditApartmentComponent implements OnInit {
+export class UpdateTenantComponent implements OnInit {
   apartment: Apartment | null = null;
   apartmentName: string = '';
   apartmentAddress: string = '';
@@ -67,54 +67,38 @@ export class EditApartmentComponent implements OnInit {
     );
   }
 
-  updateApartment(): void {
-    if (!this.apartment) {
-      return; // Salimos si el apartamento es null
+  updateTenant(): void {
+    if (!this.apartment || this.selectedTenantId === 0) {
+      this.toastr.error('Debe seleccionar un arrendatario válido.', 'Error');
+      return;
     }
 
-    const updatedApartment: Apartment = {
+    const updatedApartment = {
       ...this.apartment,
-      name: this.apartmentName,
-      address: this.apartmentAddress,
-      rent_price: this.rentPrice,
-      tenant_id: this.selectedTenantId,
-      description: this.description,
-      status: this.status
+      tenant_id: this.selectedTenantId
     };
 
-    this.loading = true;
-
-    // Actualiza el apartamento
     this.apartmentService.updateApartment(updatedApartment).subscribe(
-      () => {
-        // Verificamos que this.apartment no sea null antes de llamar a updateApartmentHistory
-        if (this.apartment) {
-          // Actualiza el historial del apartamento
-          this.tenantService.updateApartmentHistory(this.apartment.apartment_id, this.selectedTenantId).subscribe(
-            () => {
-              this.loading = false;
-              this.toastr.success('El apartamento y su historial han sido actualizados con éxito.', 'Actualización exitosa');
-              this.router.navigate(['/apartments']);
-            },
-            (error: HttpErrorResponse) => {
-              this.loading = false;
-              this.toastr.error('Error al actualizar el historial del apartamento', 'Error');
-            }
-          );
-        }
+      (apartment) => {
+        this.toastr.success('Arrendatario actualizado con éxito.', 'Éxito');
+        this.addTenantHistory(this.apartment!.apartment_id, this.selectedTenantId);
+        this.router.navigate(['/apartments']);
       },
       (error: HttpErrorResponse) => {
-        this.loading = false;
-        this.toastr.error('Error al actualizar el apartamento', 'Error');
+        this.toastr.error('Error al actualizar el arrendatario.', 'Error');
       }
     );
   }
 
-  get formattedRentPrice(): string {
-    return `$${this.rentPrice.toFixed(2)}`;
-  }
-
-  updateRentPrice(value: string): void {
-    this.rentPrice = parseFloat(value.replace(/[$,]/g, '')); // Elimina el símbolo $ y convierte a número
+  private addTenantHistory(apartmentId: number, tenantId: number): void {
+    this.tenantService.addTenantHistory(apartmentId, tenantId).subscribe(
+      (response) => {
+        console.log('Historial actualizado:', response);
+      },
+      (error) => {
+        console.error('Error al actualizar el historial:', error);
+        this.toastr.error('No se pudo actualizar el historial.', 'Error');
+      }
+    );
   }
 }

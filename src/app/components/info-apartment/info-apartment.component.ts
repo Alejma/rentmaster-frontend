@@ -1,5 +1,7 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { OnInit, ChangeDetectorRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ApartmentService } from '../../services/apartment.service';
 import { TenantService } from '../../services/tenant.service'; 
 import { Apartment } from '../../interfaces/apartment';
@@ -25,6 +27,7 @@ export class InfoApartmentComponent implements OnInit {
   tenants: Tenant[] = [];
   loading: boolean = false;
   tenantHistory: TenantHistory[] = [];
+  showHistory: boolean = false;  // Controla la visibilidad del historial
 
   constructor(
     private route: ActivatedRoute,
@@ -51,8 +54,6 @@ export class InfoApartmentComponent implements OnInit {
       )
     }).subscribe(
       (result) => {
-        console.log('Resultados obtenidos:', result); // Log de resultados
-
         this.tenants = result.tenants;
         this.apartment = result.apartment;
         this.tenantHistory = result.tenantHistory;
@@ -63,7 +64,6 @@ export class InfoApartmentComponent implements OnInit {
       },
       (error: HttpErrorResponse) => {
         this.loading = false;
-        console.error('Error detallado:', error); // Log de error
         this.toastr.error('Error al cargar los datos', 'Error');
       }
     );
@@ -83,7 +83,7 @@ export class InfoApartmentComponent implements OnInit {
     return tenant ? tenant.name : 'Desconocido';
   }
 
-  getFormattedRentPrice(): string {
-    return this.apartment?.rent_price != null ? `$${this.apartment.rent_price.toFixed(2)}` : 'No disponible';
+  toggleHistory(): void {
+    this.showHistory = !this.showHistory;  // Alterna la visibilidad del historial
   }
 }

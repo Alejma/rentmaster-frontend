@@ -70,7 +70,7 @@
 
 /* Estilos para los botones cuadrados */
 .btn-square {
-    width: 80px; /* Tamaño del botón */
+    width: 70px; /* Tamaño del botón */
     height: 40px; /* Tamaño del botón */
     border: none; /* Sin borde */
     border-radius: 5px; /* Bordes redondeados */
@@ -101,6 +101,13 @@
     transition: background-color 0.3s; /* Transición suave */
 }
 
+/* Estilos para el botón rojo */
+.btn-green {
+    background-color: #2ecc71; /* Color de fondo rojo */
+    color: white; /* Color del ícono */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
 /* Efecto hover para los botones */
 .btn-yellow:hover {
     background-color: #e67e22; /* Color más oscuro al pasar el mouse */
@@ -112,6 +119,11 @@
 
 .btn-red:hover {
     background-color: #c0392b; /* Color más oscuro al pasar el mouse */
+}
+
+/* Efecto hover para los botones */
+.btn-green:hover {
+    background-color: #24a55a; /* Color más oscuro al pasar el mouse */
 }
 
 /* Estilo para los íconos */

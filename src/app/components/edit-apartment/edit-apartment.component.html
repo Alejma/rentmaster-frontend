@@ -20,7 +20,7 @@
             </div>
             <!-- Seleccionar Inquilino (Tenant) -->
             <div class="form-floating mb-2">
-                <select [(ngModel)]="selectedTenantId" name="tenant" class="form-control" id="tenant">
+                <select [(ngModel)]="selectedTenantId" name="tenant" class="form-control" id="tenant" disabled>
                     <option *ngFor="let tenant of tenants" [value]="tenant.tenant_id">
                       {{ tenant.name }} <!-- Mostrar el nombre del arrendatario -->
                     </option>

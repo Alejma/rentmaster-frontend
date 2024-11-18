@@ -1,0 +1,27 @@
+<div class="wrapper">
+    <div class="body">
+        <img class="logo" src="assets/img/casa1.png" alt="img casa1">
+        <h3>Actualizar arrendatario</h3>
+        <br>
+        <div class="form-grid">
+            <!-- Seleccionar Inquilino (Tenant) -->
+            <div class="form-floating mb-2">
+                <select [(ngModel)]="selectedTenantId" name="tenant" class="form-control" id="tenant">
+                    <option *ngFor="let tenant of tenants" [value]="tenant.tenant_id">
+                      {{ tenant.name }} <!-- Mostrar el nombre del arrendatario -->
+                    </option>
+                </select>
+                <label>Arrendatario</label>
+            </div> 
+        </div> <!-- fin del grid -->
+        <br>
+        <br>
+        <div class="d-grid gap-2 mb-3">
+            <button type="button" (click)="updateTenant()" class="btn btn-primary btn-lg">Actualizar</button>
+        </div>
+        
+        <div class="d-grid gap-2 mb-3">
+            <a routerLink="/apartments">Volver</a>
+        </div>
+    </div>
+</div>

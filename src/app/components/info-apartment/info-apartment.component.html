@@ -24,7 +24,7 @@
                 <label>Descripción</label>
             </div>
             <div class="form-floating mb-2">
-                <input type="text" class="form-control" [value]="getFormattedRentPrice()" placeholder=" " disabled>
+                <input type="number" class="form-control" [value]="apartment?.rent_price" placeholder=" " disabled>
                 <label>Precio</label>
             </div>        
             <div class="form-floating mb-2">
@@ -33,26 +33,40 @@
             </div>           
         </div> <!-- fin del grid -->
         <br>
-        <div class="form-grid">
-            <table *ngIf="tenantHistory.length > 0" class="history-table">
-                <thead>
-                    <tr>
-                        <th>Historial de arrendatarios</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let history of tenantHistory">
-                        <td>{{ getTenantNameById(history.tenant_id) }}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <!-- Muestra este mensaje si no hay historial -->
-            <div *ngIf="tenantHistory.length === 0">
-                <p>No hay historial de arrendatarios disponible para este apartamento.</p>
+
+        <!-- Botón para mostrar/ocultar historial -->
+        <button class="toggle-history-btn" (click)="toggleHistory()">
+            <i class="fas" [ngClass]="showHistory ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+            {{ showHistory ? 'Ocultar historial' : 'Mostrar historial' }}
+        </button>
+        
+
+        <!-- Mostrar historial solo si showHistory es verdadero -->
+        <div *ngIf="showHistory">
+            <div class="form-grid">
+                <table *ngIf="tenantHistory.length > 0" class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Historial de arrendatarios</th>
+                            <th>Fecha de Asignación</th> <!-- Nueva columna para la fecha -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let history of tenantHistory">
+                            <td>{{ getTenantNameById(history.tenant_id) }}</td>
+                            <td>{{ history.createdAt | date:'dd/MM/yyyy' }}</td> <!-- Mostramos la fecha -->
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- Muestra este mensaje si no hay historial -->
+                <div *ngIf="tenantHistory.length === 0">
+                    <p>No hay historial de arrendatarios disponible para este apartamento.</p>
+                </div>
             </div>
         </div>
+
         <div class="d-grid gap-2 mb-3">
-            <a routerLink="/apartments">Volver</a> <!-- Añade una clase para estilo si es necesario -->
+            <a routerLink="/apartments">Volver</a>
         </div>
     </div>
 </div>

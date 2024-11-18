@@ -95,4 +95,8 @@ export class ApartmentComponent implements OnInit {
   editApartment(apartment: Apartment): void {
     this.router.navigate(['/edit-apartment', { id: apartment.apartment_id }]);
   }
+
+  updateTenant(apartment: Apartment) : void {
+    this.router.navigate(['/update-tenant', { id: apartment.apartment_id }]);
+  }
 }
