@@ -18,6 +18,7 @@ import { CreateTicketComponent } from './components/create-ticket/create-ticket.
 import { TicketsTenantComponent } from './components/tickets-tenant/tickets-tenant.component';
 import { DashboardTenantComponent } from './components/dashboard-tenant/dashboard-tenant.component';
 import { ResumeComponent } from './components/resume/resume.component';
+import { DocumentsSupComponent } from './components/documents-sup/documents-sup.component';
 
 
 
@@ -38,6 +39,7 @@ export const routes: Routes = [
     {path: 'edit_contract/:id', component: EditContractComponent},
     {path: 'tickets-tenant', component: TicketsTenantComponent},
     {path: 'dashboard-tenant', component: DashboardTenantComponent},
+    {path: 'support-documents', component: DocumentsSupComponent},
     {path: 'resume', component: ResumeComponent},
     {path:'**', component: NotFoundComponent}
     // redirectTo: 'login', pathMatch:'full'

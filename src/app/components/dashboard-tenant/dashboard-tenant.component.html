@@ -1,4 +1,5 @@
-<app-navbar></app-navbar>
+
+<app-navbar-tenant></app-navbar-tenant>
 <div class="dashboard">
     <!-- Mensaje de bienvenida con icono de casa -->
     <div class="welcome-message">
@@ -6,15 +7,48 @@
             <i class="bi bi-house" style="font-size: 2rem; color: #0d395e;"></i> 
             Bienvenido a RentMaster
         </h2>
+
+        <p>Como arrendatario usted podra gestionar el estado de sus apartamentos, contratos y tickets desde un solo lugar.</p>
+    </div>
+    <!-- Primera fila de tarjetas (Arrendatarios y Apartamentos) -->
+    <div class="card-row">
+        <div class="card apartments-card" routerLink="/apartments">
+            <i class="bi bi-building" style="font-size: 2rem;"></i>
+            <h3>Apartamentos</h3>
+            <p>Administra tus Apartamentos</p>
+        </div>
+        <div class="card tenants-card" routerLink="/support-documents">
+          <i class="bi bi-file-earmark-text" style="font-size: 2rem;"></i>
+          <h3>Documentos</h3>
+          <p>Administra tus documentos de soporte</p>
+      </div>
+    </div>
+
+    <!-- Segunda fila de tarjetas (Contratos y Tickets) -->
+    <div class="card-row">
+        <div class="card contracts-card" routerLink="/contracts">
+            <i class="bi bi-file-earmark-text" style="font-size: 2rem;"></i>
+            <h3>Contratos</h3>
+            <p>Administra tus contratos</p>
+        </div>
+        <div class="card tickets-card" routerLink="/tickets">
+
         <p>Gestione sus apartamentos, arrendatarios, contratos y tickets desde un solo lugar.</p>
     </div>
     <!-- Primera fila de tarjetas (Arrendatarios y Apartamentos) -->
     <div class="card-row">
         <div class="card tickets-card" routerLink="/tickets-tenant">
+
             <i class="bi bi-ticket-perforated" style="font-size: 2rem;"></i>
             <h3>Tickets</h3>
             <p>Administra tus tickets</p>
         </div>
+
+    </div>
+    
+    <p><strong>RENTMASTER</strong></p>
+</div>
+
         <div class="card tickets-card" routerLink="">
             <i class="bi bi-cash-stack" style="font-size: 2rem;"></i>
             <h3>Pagos y Facturas</h3>
@@ -23,3 +57,4 @@
     </div>
     <p><strong>RENTMASTER</strong></p>
 </div>
+
