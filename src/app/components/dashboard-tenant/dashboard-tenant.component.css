@@ -1,0 +1,82 @@
+.dashboard {
+    display: flex;
+    flex-direction: column; /* Apila las filas de tarjetas verticalmente */
+    align-items: center;
+    gap: 10px; /* Añade un espacio entre las filas */
+    justify-content: space-around;
+    margin: 20px;
+  }
+  
+  .card-row {
+    display: flex;
+    justify-content: space-between; /* Distribuye el espacio entre las tarjetas horizontalmente */
+    width: 80%; /* Ajusta el ancho según lo que necesites */
+    margin-bottom: 20px; /* Espacio debajo de las filas de tarjetas */
+  }
+  
+  .card {
+    flex: 1; /* Cada tarjeta ocupa el mismo espacio */
+    margin: 0 10px; /* Espaciado entre las tarjetas en la misma fila */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombras para las tarjetas */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    color: #ffffff; /* Texto en blanco */
+  }
+  
+  .tenants-card { background-color: #0d395e; } /* Color azul oscuro */
+  .apartments-card { background-color: #0d395e; } /* Color azul oscuro */
+  .contracts-card { background-color: #0d395e; } /* Color azul oscuro */
+  .tickets-card { background-color: #0d395e; } /* Color azul oscuro */
+  
+  .card:hover {
+    transform: scale(1.05); /* Efecto de zoom al hacer hover */
+  }
+  
+  .totals {
+    margin-top: 30px; /* Añadir espacio antes de la sección de totales */
+  }
+  
+  
+    .totals {
+      margin-top: 20px;
+      padding: 10px;
+      border-top: 1px solid #ccc;
+      text-align: center;
+    }
+    
+    .totals h3 {
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    
+    .totals p {
+      font-size: 1.2rem;
+    }
+    .welcome-message {
+      text-align: center;
+      background-color: #f4f4f4; /* Fondo gris suave */
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .welcome-message h2 {
+      color: #0d395e; /* Color del texto del título */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .welcome-message h2 i {
+      margin-right: 10px; /* Espacio entre el ícono y el texto */
+  }
+  
+  .welcome-message p {
+      font-size: 1.1rem;
+      color: #333;
+  }

@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
-import { NavbarComponent } from '../navbar/navbar.component';
+import { Component, NgModule } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { NavbarTenantComponent } from '../navbar-tenant/navbar-tenant.component';
 
 @Component({
   selector: 'app-dashboard-tenant',
   standalone: true,
-  imports: [NavbarComponent],
+  imports: [NavbarTenantComponent, RouterModule],
   templateUrl: './dashboard-tenant.component.html',
   styleUrl: './dashboard-tenant.component.css'
 })
