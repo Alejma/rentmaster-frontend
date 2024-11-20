@@ -40,6 +40,31 @@
     border-bottom: 1px solid #ddd;
 }
 
+/* Botón para mostrar/ocultar historial */
+.toggle-history-btn {
+    background-color: #007bff; /* Color de fondo azul */
+    color: white;  /* Color del texto */
+    font-size: 16px;  /* Tamaño del texto */
+    padding: 10px 20px;  /* Espaciado alrededor del texto */
+    border: none;  /* Elimina el borde por defecto */
+    border-radius: 5px;  /* Bordes redondeados */
+    cursor: pointer;  /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s;  /* Transición suave para el cambio de color */
+}
+
+/* Estilo cuando el botón está en hover (pasado el mouse por encima) */
+.toggle-history-btn:hover {
+    background-color: #0056b3; /* Cambio de color al pasar el mouse */
+}
+
+/* Estilo cuando el botón está deshabilitado */
+.toggle-history-btn:disabled {
+    background-color: #d6d6d6;
+    cursor: not-allowed;
+}
+
+
+
 
 @media (min-width: 768px) {
     .body {

@@ -2,7 +2,6 @@
 import { Component, NgModule } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { NavbarTenantComponent } from '../navbar-tenant/navbar-tenant.component';
-import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 

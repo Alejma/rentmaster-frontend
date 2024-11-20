@@ -84,4 +84,22 @@ export class TenantService {
     return this.http.put(`${this.myAppUrl}/api/apartmentHistory/apartments/${apartmentId}`, { tenant_id: tenantId }, { headers });
 
   }
+
+  addTenantHistory(apartmentId: number, tenantId: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    const body = {
+      apartment_id: apartmentId,
+      tenant_id: tenantId
+    };
+
+    return this.http.post<any>(
+      `${this.myAppUrl}/api/tenantHistory`,
+      body,
+      { headers }
+    );
+  }
 }

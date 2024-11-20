@@ -19,6 +19,7 @@ import { TicketsTenantComponent } from './components/tickets-tenant/tickets-tena
 import { DashboardTenantComponent } from './components/dashboard-tenant/dashboard-tenant.component';
 import { ResumeComponent } from './components/resume/resume.component';
 import { DocumentsSupComponent } from './components/documents-sup/documents-sup.component';
+import { UpdateTenantComponent } from './components/update-tenant/update-tenant.component';
 
 
 
@@ -41,6 +42,7 @@ export const routes: Routes = [
     {path: 'dashboard-tenant', component: DashboardTenantComponent},
     {path: 'support-documents', component: DocumentsSupComponent},
     {path: 'resume', component: ResumeComponent},
+    {path: 'update-tenant', component: UpdateTenantComponent},
     {path:'**', component: NotFoundComponent}
     // redirectTo: 'login', pathMatch:'full'
 ];

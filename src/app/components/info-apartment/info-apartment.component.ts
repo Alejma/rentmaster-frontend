@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { OnInit, ChangeDetectorRef } from '@angular/core';
@@ -15,7 +14,6 @@ import { RouterLink } from '@angular/router';
 import { TenantHistory } from '../../interfaces/tenant-history';
 import { CommonModule } from '@angular/common';
 
-
 @Component({
   selector: 'app-info-apartment',
   standalone: true,
@@ -29,6 +27,7 @@ export class InfoApartmentComponent implements OnInit {
   tenants: Tenant[] = [];
   loading: boolean = false;
   tenantHistory: TenantHistory[] = [];
+  showHistory: boolean = false;  // Controla la visibilidad del historial
 
   constructor(
     private route: ActivatedRoute,
@@ -55,8 +54,6 @@ export class InfoApartmentComponent implements OnInit {
       )
     }).subscribe(
       (result) => {
-        console.log('Resultados obtenidos:', result); // Log de resultados
-
         this.tenants = result.tenants;
         this.apartment = result.apartment;
         this.tenantHistory = result.tenantHistory;
@@ -67,7 +64,6 @@ export class InfoApartmentComponent implements OnInit {
       },
       (error: HttpErrorResponse) => {
         this.loading = false;
-        console.error('Error detallado:', error); // Log de error
         this.toastr.error('Error al cargar los datos', 'Error');
       }
     );
@@ -86,5 +82,8 @@ export class InfoApartmentComponent implements OnInit {
     const tenant = this.tenants.find(t => t.tenant_id === tenantId);
     return tenant ? tenant.name : 'Desconocido';
   }
-}
 
+  toggleHistory(): void {
+    this.showHistory = !this.showHistory;  // Alterna la visibilidad del historial
+  }
+}
