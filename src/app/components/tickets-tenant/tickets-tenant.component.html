@@ -1,10 +1,10 @@
 <app-navbar></app-navbar>
 
 <div class="container">
+
     
     <div class="left-section">
-    
-        <div class="welcome-text"  style="text-align: center;" >
+        <div class="welcome-text">
             <img src="assets/img/ayuda.png" alt="Imagen de Ayuda" class="left-image">
             <h2>¡Bienvenido a la Gestión de Tickets!</h2>
             <p>Aquí puedes crear y gestionar todos tus tickets de manera sencilla y rápida. Los tickets te permiten reportar cualquier problema o solicitud relacionada con tu apartamento, como reparaciones, mantenimiento o cualquier otra necesidad. A través de esta herramienta, podrás:</p>
@@ -17,18 +17,39 @@
         </div>
     </div>
 
-   
+  
     <div class="right-section">
-        <div class="info-box">
-            <button class="btn-add-ticket" routerLink="/create-ticket">
+        <div class="ticket-container">
+            <h3>Tus Tickets</h3>
+            <p class="ticket-info-text">Aquí puedes ver todos tus tickets actuales y gestionarlos.</p>
+
+            <button type="button" class="btn-add-ticket" routerLink="/create-ticket">
                 <i class="fa fa-ticket-alt"></i> Enviar Ticket
             </button>
-
-            <div class="ticket-info">
-                <h3>Tus Tickets</h3>
-                <p>Aquí puedes ver todos tus tickets actuales y gestionarlos.</p>
-            </div>
+            <a class="btn-reply" routerLink="/dashboard-tenant">
+                <i class="fa fa-reply"></i>
+            </a>
+            
+            <table class="ticket-table" *ngIf="tickets.length > 0; else noTickets">
+                <thead>
+                    <tr>
+                        <th>Asunto</th>
+                        <th>Descripción</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ticket of tickets">
+                        <td>{{ ticket.subject }}</td>
+                        <td>{{ ticket.description }}</td>
+                        <td>{{ ticket.status }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <ng-template #noTickets>
+                <p class="no-tickets-message">No tienes tickets registrados en este momento.</p>
+            </ng-template>
         </div>
     </div>
-</div>
 
+</div>

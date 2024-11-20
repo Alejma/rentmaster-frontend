@@ -68,6 +68,15 @@ export class TicketService {
     return this.http.delete<any>(`${this.myAppUrl}${this.myApiUrl}${id}`, { headers });
   }
 
+  getTicketsByTenantId(tenantId: number): Observable<Ticket[]> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+  
+    return this.http.get<Ticket[]>(`${this.myAppUrl}${this.myApiUrl}tenants/${tenantId}`, { headers });
+  }
+
   // Obtener el historial de tickets por ID de apartamento
   getTicketsByApartmentId(apartmentId: number): Observable<Ticket[]> {
     const token = localStorage.getItem('token');
