@@ -1,53 +1,74 @@
 .container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-  }
-
-  .left-image {
-    max-width: 80%;
-    
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  margin: auto;
+  max-width: 1200px;
+  height: 100vh; /* Hace que las secciones estén centradas verticalmente */
 }
+
+.section {
+  flex: 1;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  max-width: 48%;
+}
+
+.right-section .info-box {
+  margin: 177px;
+  justify-content:left;
+}
+
+.left-section .welcome-text{
+  margin: 0 auto;
+}
+
+.left-image {
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+.info-box h3 {
+  margin-bottom: 20px;
+}
+
+.form-floating {
+  margin-bottom: 20px;
+  width: 230px;
   
-  .ticket-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #0d395e;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    font-size: 1rem;
-    color: #333;
-  }
-  
-  .form-control {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #c5c5c5;
-    font-size: 1rem;
-  }
-  
-  .btn-save, .btn-cancel {
-    padding: 10px;
-    width: 100%;
-    margin-top: 10px;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  
+}
+
+.d-grid {
+  margin-top: 20px;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  text-align: left;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
