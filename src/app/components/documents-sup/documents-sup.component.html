@@ -2,12 +2,6 @@
 <div class="wp">
   <form (ngSubmit)="onSubmit()">
     <h2>Documentos</h2>
-    <!-- Campo para el ID del arrendatario -->
-    <div class="form-floating mb-3 mt-3">
-      <input id="tenantId" [(ngModel)]="tenant_id" name="tenantId" type="number" class="form-control compact-input" required>
-      <label for="tenantId">ID del Arrendatario:</label>
-    </div>
-
     <!-- Campos para subir documentos -->
     <div class="documents-container">
       <div class="form-group" *ngFor="let doc of documentTypes">
