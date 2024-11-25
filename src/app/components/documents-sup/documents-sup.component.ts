@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NavbarTenantComponent } from '../navbar-tenant/navbar-tenant.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-documents-sup',
@@ -12,8 +13,8 @@ import { NavbarTenantComponent } from '../navbar-tenant/navbar-tenant.component'
   templateUrl: './documents-sup.component.html',
   styleUrl: './documents-sup.component.css'
 })
-export class DocumentsSupComponent {
-  tenant_id: number | null = null; // Para capturar el ID del arrendatario manualmente
+export class DocumentsSupComponent implements OnInit {
+  tenant_id: number | null = null; // Para capturar el ID del arrendatario
   documentTypes = [
     { type: 'cedula', label: 'Cédula de Ciudadanía', file: null as File | null },
     { type: 'carta_laboral', label: 'Carta Laboral', file: null as File | null },
@@ -21,7 +22,17 @@ export class DocumentsSupComponent {
     { type: 'referencias', label: 'Referencias Personales o Laborales', file: null as File | null }
   ];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
+
+  ngOnInit() {
+  // Obtener el ID del usuario logueado desde el servicio de autenticación
+    const userId = this.authService.getId();
+    if (userId) {
+      this.tenant_id = parseInt(userId, 10); // Convertir el ID a número
+    } else {
+      console.error('No se pudo obtener el ID del usuario logueado');
+    }
+  }
 
   onFileSelected(event: any, type: string) {
     const file = event.target.files[0];
@@ -35,7 +46,7 @@ export class DocumentsSupComponent {
 
   onSubmit() {
     if (!this.tenant_id) {
-      alert('Por favor, introduce el ID del arrendatario.');
+      alert('No se encontró el ID del arrendatario. Intente iniciar sesión nuevamente.');
       return;
     }
 
