@@ -6,6 +6,8 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { SpinnerComponent } from '../../shared/spinner/spinner.component';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { ApartmentService } from '../../services/apartment.service';
 
 @Component({
   selector: 'app-create-ticket',
@@ -16,49 +18,63 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class CreateTicketComponent implements OnInit {
   ticketData = {
-    tenant_id: '', // Inicializamos vacío
-    apartment_id: '', // Inicializamos vacío
+    tenant_id: '',
+    apartment_id: '',
     subject: '',
     description: '',
     status: '',
     technician_name: '',
   };
-  descriptionOptions = ['Fallas eléctricas', 'Problemas de fontanería', 'Ruido excesivo']; // Opciones predefinidas
-  selectedDescription = ''; // Valor seleccionado
-  isOtherSelected = false; // Bandera para mostrar el campo personalizado
 
+  descriptionOptions = ['Fallas eléctricas', 'Problemas de fontanería', 'Ruido excesivo'];
+  selectedDescription = '';
+  isOtherSelected = false;
   loading: boolean = false;
 
-  constructor(private ticketService: TicketService, private router: Router) {}
+  constructor(
+    private ticketService: TicketService,
+    private apartmentService: ApartmentService,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
+    this.ticketData.tenant_id = this.authService.getId() || '';
 
-    const defaultTenantId = '25';
-    const defaultApartmentId = '795';
-
-    
-    this.ticketData.tenant_id = defaultTenantId;
-    this.ticketData.apartment_id = defaultApartmentId;
-
-    console.log('Tenant ID establecido:', this.ticketData.tenant_id);
-    console.log('Apartment ID establecido:', this.ticketData.apartment_id);
+    if (this.ticketData.tenant_id) {
+      this.apartmentService.getApartmentsByTenantId(parseInt(this.ticketData.tenant_id, 10)).subscribe({
+        next: (apartments) => {
+          if (apartments.length > 0) {
+            this.ticketData.apartment_id = apartments[0].id.toString(); // Usa el primer apartamento
+          } else {
+            console.warn('No se encontraron apartamentos para este inquilino.');
+          }
+        },
+        error: (err) => {
+          console.error('Error al cargar los apartamentos:', err);
+          if (err.status === 403) {
+            alert('Acceso denegado. Por favor verifica tus permisos.');
+          }
+        },
+      });
+    }
   }
-  
+
   onDescriptionChange(event: Event) {
     const selectedValue = (event.target as HTMLSelectElement).value;
     if (selectedValue === 'Otros') {
       this.isOtherSelected = true;
-      this.ticketData.description = ''; // Limpiar campo personalizado
+      this.ticketData.description = '';
     } else {
       this.isOtherSelected = false;
-      this.ticketData.description = selectedValue; // Asignar directamente la opción seleccionada
+      this.ticketData.description = selectedValue;
     }
   }
 
   createTicket() {
     const newTicket: Ticket = {
-      tenant_id: parseInt(this.ticketData.tenant_id, 10), 
-      apartment_id: parseInt(this.ticketData.apartment_id, 10), 
+      tenant_id: parseInt(this.ticketData.tenant_id, 10),
+      apartment_id: parseInt(this.ticketData.apartment_id, 10),
       subject: this.ticketData.subject,
       description: this.ticketData.description,
       status: this.ticketData.status,
@@ -69,6 +85,7 @@ export class CreateTicketComponent implements OnInit {
       next: (response) => {
         console.log('Ticket creado con éxito:', response);
         this.resetForm();
+        this.router.navigate(['/tickets-tenant']);
       },
       error: (err) => {
         console.error('Error al crear el ticket:', err);
@@ -78,8 +95,8 @@ export class CreateTicketComponent implements OnInit {
 
   resetForm() {
     this.ticketData = {
-      tenant_id: this.ticketData.tenant_id, 
-      apartment_id: this.ticketData.apartment_id, 
+      tenant_id: this.ticketData.tenant_id,
+      apartment_id: this.ticketData.apartment_id,
       subject: '',
       description: '',
       status: '',

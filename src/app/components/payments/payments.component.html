@@ -1,0 +1,64 @@
+<app-navbar-tenant></app-navbar-tenant>
+<div class="container">
+    <div class="row">
+      <!-- Sección Izquierda: Información -->
+      <div class="col-md-6">
+        <div class="info-section">
+          <h2>Paga tu Apartamento</h2>
+          <p>
+            Realiza el pago en línea de tu apartamento de manera rápida y segura. Asegúrate de llenar correctamente todos los campos del formulario.
+          </p>
+          <ul>
+            <li><strong>Soporte 24/7:</strong> Estamos disponibles para ayudarte en cualquier momento.</li>
+            <li><strong>Pagos Seguros:</strong> Usamos métodos de cifrado avanzados para proteger tu información.</li>
+            <li><strong>Confirmación Instantánea:</strong> Recibirás un correo de confirmación al completar el pago.</li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Sección Derecha: Formulario de Pago -->
+      <div class="col-md-6">
+        <div class="form-section">
+          <h3>Formulario de Pago</h3>
+  
+          <!-- Selección de Apartamento -->
+          <div class="form-floating mb-3">
+            <select class="form-control" id="apartmentSelect">
+              <option value="" disabled selected>Selecciona tu apartamento</option>
+            </select>
+            <label for="apartmentSelect">Apartamento</label>
+          </div>
+  
+          <!-- Monto -->
+          <div class="form-floating mb-3">
+            <input
+              type="number"
+          
+              class="form-control"
+              id="paymentAmount"
+              placeholder="Monto a pagar"
+            />
+            <label for="paymentAmount">Monto a pagar (USD)</label>
+          </div>
+  
+          <!-- Métodos de Pago -->
+          <div class="form-floating mb-3">
+            <select  class="form-control" id="paymentMethod">
+              <option value="" disabled selected>Selecciona un método de pago</option>
+              <option value="CreditCard">Tarjeta de Crédito</option>
+              <option value="DebitCard">Tarjeta de Débito</option>
+              <option value="BankTransfer">Transferencia Bancaria</option>
+            </select>
+            <label for="paymentMethod">Método de Pago</label>
+          </div>
+  
+          <!-- Botón -->
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary btn-lg" >Pagar</button>
+            <button class="btn btn-secondary btn-lg" routerLink="/dashboard">Volver</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

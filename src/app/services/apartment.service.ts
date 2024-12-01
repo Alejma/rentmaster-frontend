@@ -7,63 +7,56 @@ import { Apartment } from '../interfaces/apartment';
   providedIn: 'root',
 })
 export class ApartmentService {
-  private myAppUrl: string;
-  private myApiUrl: string;
+  private readonly myAppUrl: string = 'http://localhost:3001'; 
+  private readonly myApiUrl: string = '/api/apartments'; 
 
-  constructor(private http: HttpClient) { 
-    this.myAppUrl = 'http://localhost:3001'; 
-    this.myApiUrl = '/api/apartments'; 
+  constructor(private http: HttpClient) {}
+
+  // Método para obtener los encabezados con token
+  private getHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token');
+    return new HttpHeaders({
+      'Authorization': `Bearer ${token || ''}`,
+    });
   }
 
+  // Obtener todos los apartamentos
   getApartments(): Observable<Apartment[]> {
-    const token = localStorage.getItem('token'); // Verifica que guardaste el token
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`, // Enviando el token en el encabezado
-    });
-  
+    const headers = this.getHeaders();
     return this.http.get<Apartment[]>(`${this.myAppUrl}${this.myApiUrl}`, { headers });
   }
 
-  // Registrar un nuevo Apartamento
+  // Obtener apartamentos por Tenant ID
+  getApartmentsByTenantId(tenantId: number): Observable<{ id: number; name: string }[]> {
+    const headers = this.getHeaders();
+    return this.http.get<{ id: number; name: string }[]>(`${this.myAppUrl}${this.myApiUrl}?tenantId=${tenantId}`, { headers });
+  }
+
+  // Obtener apartamento por ID
+  getApartmentById(apartment_id: number): Observable<Apartment> {
+    const headers = this.getHeaders();
+    return this.http.get<Apartment>(`${this.myAppUrl}${this.myApiUrl}/${apartment_id}`, { headers });
+  }
+
+  // Registrar un nuevo apartamento
   addApartment(apartment: Apartment): Observable<any> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
+    const headers = this.getHeaders();
     return this.http.post(`${this.myAppUrl}${this.myApiUrl}`, apartment, { headers });
   }
 
-  deleteApartment(apartment_id: number): Observable<any> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-    return this.http.delete(`${this.myAppUrl}${this.myApiUrl}/${apartment_id}`, {headers});
-  }
-  
-  getApartmentById(apartment_id: number): Observable<Apartment> {
-    const token = localStorage.getItem('token'); 
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`, 
-    });
-    
-    return this.http.get<Apartment>(`${this.myAppUrl}${this.myApiUrl}/${apartment_id}`, { headers }); // Agregada la barra '/'
-  }
-
-  // updateApartment(apartment: Apartment): Observable<any> {
-  //   const token = localStorage.getItem('token');
-  //   const headers = new HttpHeaders({
-  //     'Authorization': `Bearer ${token}`
-  //   });
-  //   return this.http.put(`${this.myAppUrl}${this.myApiUrl}`, apartment, { headers });
-  // }
-
+  // Actualizar apartamento existente
   updateApartment(apartment: Apartment): Observable<Apartment> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-    return this.http.put<Apartment>(`${this.myAppUrl}${this.myApiUrl}/${apartment.apartment_id}`, apartment, { headers });
+    const headers = this.getHeaders();
+    return this.http.put<Apartment>(
+      `${this.myAppUrl}${this.myApiUrl}/${apartment.apartment_id}`,
+      apartment,
+      { headers }
+    );
   }
 
+  // Eliminar apartamento por ID
+  deleteApartment(apartment_id: number): Observable<any> {
+    const headers = this.getHeaders();
+    return this.http.delete(`${this.myAppUrl}${this.myApiUrl}/${apartment_id}`, { headers });
+  }
 }

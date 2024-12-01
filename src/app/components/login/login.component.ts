@@ -35,12 +35,20 @@ export class LoginComponent {
     this._authService.login(this.email, this.password).subscribe({
       next: () => {
         const role = this._authService.getRole();
-        console.log(role);
+        const tenantId = this._authService.getId(); // Obtenemos el Tenant ID // Obtenemos el Apartment ID
+        const apartmentId = this._authService.getApartmentId(); // Obtenemos el Apartment ID
+
+      console.log(`Tenant ID: ${tenantId}, Apartment ID: ${apartmentId}`);
+  
+        // Navegamos al dashboard correspondiente
         if (role === 'admin') {
           this.router.navigate(['/dashboard']);
         } else {
           this.router.navigate(['/dashboard-tenant']);
         }
+      },
+      error: (err) => {
+        console.error('Error al iniciar sesión:', err);
       }
     });
   }

@@ -20,6 +20,7 @@ import { DashboardTenantComponent } from './components/dashboard-tenant/dashboar
 import { ResumeComponent } from './components/resume/resume.component';
 import { DocumentsSupComponent } from './components/documents-sup/documents-sup.component';
 import { UpdateTenantComponent } from './components/update-tenant/update-tenant.component';
+import { PaymentsComponent } from './components/payments/payments.component';
 
 
 
@@ -40,6 +41,7 @@ export const routes: Routes = [
     {path: 'edit_contract/:id', component: EditContractComponent},
     {path: 'tickets-tenant', component: TicketsTenantComponent},
     {path: 'dashboard-tenant', component: DashboardTenantComponent},
+    {path: 'payments', component:PaymentsComponent},
     {path: 'support-documents', component: DocumentsSupComponent},
     {path: 'resume', component: ResumeComponent},
     {path: 'update-tenant', component: UpdateTenantComponent},

@@ -1,0 +1,48 @@
+.container {
+    margin-top: 50px;
+  }
+  
+  .info-section {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .info-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .info-section p {
+    font-size: 1.2rem;
+  }
+  
+  .info-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .info-section ul li {
+    margin-bottom: 10px;
+  }
+  
+  .form-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .form-floating label {
+    font-size: 0.9rem;
+  }
+  
+  .btn-lg {
+    font-size: 1rem;
+    padding: 10px;
+  }
+  

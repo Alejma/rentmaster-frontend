@@ -7,6 +7,7 @@ interface LoginResponse {
   token: string;
   role: string;
   id: string;
+  apartment_id: string;
 }
 
 @Injectable({
@@ -25,6 +26,7 @@ export class AuthService {
         localStorage.setItem('token', response.token); // Guardamos el token
         localStorage.setItem('role', response.role); // Guardamos el rol
         localStorage.setItem('id', response.id); // Guardamos el ID del usuario
+        localStorage.setItem('apartment_id', response.apartment_id);
       })
     );
   }
@@ -43,6 +45,9 @@ export class AuthService {
   getId(): string | null {
     return localStorage.getItem('id');
   }
+  getApartmentId(): string | null {
+    return localStorage.getItem('apartment_id');
+  }
 
 // Método para verificar si el usuario está logeado
   isLoggedIn(): boolean {
@@ -54,6 +59,7 @@ export class AuthService {
     localStorage.removeItem('token'); //Eliminamos el token, el rol y el id del local storage.
     localStorage.removeItem('role');
     localStorage.removeItem('id');
+    localStorage.removeItem('apartment_id')
     this.router.navigate(['/login']);
   }
 }
