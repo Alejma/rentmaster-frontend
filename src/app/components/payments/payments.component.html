@@ -1,25 +1,27 @@
 <app-navbar></app-navbar>
 
 <div class="container mt-4">
-  <h2>Administración de Pagos</h2>
+  <h2>Administración de Pagos <i class="bi bi-cash-stack"></i></h2>
 
-  <div class="row">
+  <div class="row d-flex align-items-start gap-4">
     <!-- Lista de pagos -->
-    <div class="col-md-6">
-      <h3>Lista de pagos</h3>
-      <table class="table">
-        <thead>
+    <div class="col-lg-6">
+      <h3 class="text-center">Lista de Pagos</h3>
+      <table class="table table-hover table-bordered shadow-sm rounded">
+        <thead class="table-primary">
           <tr>
             <th>ID</th>
-            <th>ID Arrendatario</th>
+            <th>Arrendatario</th>
             <th>Monto</th>
-            <th>Fecha de pago</th>
-            <th>Metodo de pago</th>
+            <th>Fecha de Pago</th>
+            <th>Método</th>
             <th>Estado</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let payment of Payments">
+          <tr *ngFor="let payment of Payments" 
+              [ngClass]="{'table-success': payment.status === 'Completado' || payment.status === 'Pago', 
+                          'table-secondary': payment.status === 'Pendiente'}">
             <td>{{ payment.payment_id }}</td>
             <td>{{ payment.tenant_id }}</td>
             <td>{{ payment.amount }}</td>
@@ -32,9 +34,9 @@
     </div>
 
     <!-- Formulario para agregar pago -->
-    <div class="col-md-6">
-      <form [formGroup]="paymentForm" (ngSubmit)="addPayment()">
-        <h3>Agregar Pago</h3>
+    <div class="col-lg-5">
+      <form [formGroup]="paymentForm" (ngSubmit)="addPayment()" class="shadow-sm p-3 rounded bg-light">
+        <h3 class="text-center">Agregar Pago</h3>
         <div class="mb-3">
           <label for="tenant_id" class="form-label">Arrendatario</label>
           <select id="tenant_id" class="form-select" formControlName="tenant_id" required>
@@ -59,7 +61,7 @@
           <label for="status" class="form-label">Estado</label>
           <input type="text" id="status" class="form-control" formControlName="status" required>
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!paymentForm.valid">Agregar Pago</button>
+        <button type="submit" class="btn btn-primary w-100" [disabled]="!paymentForm.valid">Agregar Pago</button>
       </form>
     </div>
   </div>

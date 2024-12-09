@@ -37,20 +37,20 @@ export class PaymentsComponent implements OnInit {
     });
   }
 
-  loadPayments(): void {
+/*   loadPayments(): void {
     const tenantId = 25; // Reemplazar con el ID del arrendatario actual si es necesario
     this.paymentService.getPaymentsByTenant(tenantId).subscribe({
       next: (data) => (this.Payments = data),
       error: (err) => console.error('Error fetching payments:', err)
     });
-  }
-/*     loadPayments(): void {
+  } */
+    loadPayments(): void {
       this.paymentService.getAllPayments().subscribe({
         next: (data) => (this.Payments = data),
         error: (err) => console.error('Error fetching payments:', err)
       });
     }
- */
+
   addPayment(): void {
     const newPayment: Payment = this.paymentForm.value;
     this.paymentService.addPayment(newPayment).subscribe({
