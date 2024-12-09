@@ -1,0 +1,44 @@
+/* Ajustar la tabla */
+.table {
+    margin-top: 20px;
+  }
+  
+  /* Formulario compacto */
+  form {
+    background-color: #f9f9f9;
+    padding: 10px; /* Reducir padding */
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px; /* Reducir el tamaño de la fuente */
+    max-width: 500px; /* Establecer un ancho máximo */
+    margin: 0 auto; /* Centrar el formulario */
+  }
+  
+  /* Reducir tamaño de las etiquetas */
+  form .form-label {
+    font-size: 14px; /* Tamaño de letra más pequeño */
+    margin-bottom: 5px; /* Menos espacio debajo de las etiquetas */
+  }
+  
+  /* Reducir tamaño de los campos de entrada */
+  form .form-control {
+    font-size: 14px; /* Tamaño de texto más pequeño */
+    padding: 6px 10px; /* Reducir padding */
+    height: 32px; /* Reducir altura de los campos de entrada */
+    margin-bottom: 10px; /* Reducir espacio entre los campos */
+  }
+  
+  /* Botón más pequeño */
+  form .btn {
+    font-size: 14px; /* Reducir tamaño de letra */
+    padding: 6px 12px; /* Reducir tamaño del botón */
+    height: auto;
+  }
+  
+  /* Reducir márgenes en el formulario */
+  form .mb-3 {
+    margin-bottom: 10px; /* Reducir margen entre los campos */
+  }
+  
+
+  
