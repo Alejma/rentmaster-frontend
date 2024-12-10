@@ -31,6 +31,7 @@
   .apartments-card { background-color: #0d395e; } /* Color azul oscuro */
   .contracts-card { background-color: #0d395e; } /* Color azul oscuro */
   .tickets-card { background-color: #0d395e; } /* Color azul oscuro */
+  .payments-card { background-color: #0d395e; } /* Color azul oscuro */
   
   .card:hover {
     transform: scale(1.05); /* Efecto de zoom al hacer hover */
