@@ -1,74 +1,40 @@
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  padding: 20px;
-  margin: auto;
-  max-width: 1200px;
-  height: 100vh; /* Hace que las secciones estén centradas verticalmente */
+  margin-top: 50px;
 }
 
-.section {
-  flex: 1;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
+.info-section {
+  padding: 20px;
+  background-color: #f8f9fa;
   border-radius: 10px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  max-width: 48%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.right-section .info-box {
-  margin: 177px;
-  justify-content:left;
-}
-
-.left-section .welcome-text{
-  margin: 0 auto;
-}
-
-.left-image {
-  max-width: 300px;
+.info-section h2 {
+  font-size: 2rem;
   margin-bottom: 20px;
 }
 
-.info-box h3 {
-  margin-bottom: 20px;
+.info-section ul {
+  padding: 0;
+  list-style: none;
 }
 
-.form-floating {
-  margin-bottom: 20px;
-  width: 230px;
-  
-}
-
-.d-grid {
-  margin-top: 20px;
-}
-
-ul {
-  list-style-type: disc;
-  padding-left: 20px;
-  text-align: left;
-}
-
-ul li {
+.info-section ul li {
   margin-bottom: 10px;
 }
 
-.btn-primary {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 5px;
+.form-section {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
+.form-floating label {
+  font-size: 0.9rem;
+}
+
+.btn-lg {
+  font-size: 1rem;
+  padding: 10px;
 }

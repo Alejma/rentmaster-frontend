@@ -1,72 +1,69 @@
 <div class="container">
-  <!-- Sección Izquierda: Introducción -->
-  <div class="section left-section">
-    <div class="welcome-text" style="text-align: center;">
-      <img src="assets/img/ayuda.png" alt="Imagen de Ayuda" class="left-image">
-      <h2>¿Qué problemas puedo reportar?</h2>
-      <p>
-        A continuación, se enumeran algunos ejemplos de problemas comunes que puede reportar a través del sistema de tickets:
-      </p>
-      <ul>
-        <li><strong>Fallas eléctricas:</strong> Cortocircuitos o apagones en su apartamento.</li>
-        <li><strong>Problemas de fontanería:</strong> Fugas de agua o problemas con el drenaje.</li>
-        <li><strong>Ruido excesivo:</strong> Problemas con vecinos o ruido en áreas comunes.</li>
-        <li><strong>Otros:</strong> Cualquier otro inconveniente no listado.</li>
-      </ul>
+  <div class="row">
+    <!-- Sección Izquierda: Introducción -->
+    <div class="col-md-6">
+      <div class="info-section">
+        <h2>¿Qué problemas puedo reportar?</h2>
+        <p>
+          A continuación, se enumeran algunos ejemplos de problemas comunes que puede reportar a través del sistema de tickets:
+        </p>
+        <ul>
+          <li><strong>Fallas eléctricas:</strong> Cortocircuitos o apagones en su apartamento.</li>
+          <li><strong>Problemas de fontanería:</strong> Fugas de agua o problemas con el drenaje.</li>
+          <li><strong>Ruido excesivo:</strong> Problemas con vecinos o ruido en áreas comunes.</li>
+          <li><strong>Otros:</strong> Cualquier otro inconveniente no listado.</li>
+        </ul>
+      </div>
     </div>
-  </div>
 
-  <!-- Sección Derecha: Formulario -->
-  <div class="section right-section">
-    <div class="info-box">
-      <h3>Enviar Ticket</h3>
-      
-      <!-- Apartamento -->
-      <div class="form-floating mb-2">
-        <select [(ngModel)]="ticketData.apartment_id" class="form-control" id="apartment">
-          <option value="" disabled selected>Selecciona un apartamento</option>
-        </select>
-        <label for="apartment">Apartamento</label>
-      </div>
+    <!-- Sección Derecha: Formulario -->
+    <div class="col-md-6">
+      <div class="form-section">
+        <h3>Crear Ticket</h3>
 
-      <!-- Asunto -->
-      <div class="form-floating mb-2">
-        <select [(ngModel)]="ticketData.subject" class="form-control" id="subject">
-          <option value="" disabled selected>Selecciona un problema</option>
-          <option value="Zona Comun">Zona Común</option>
-          <option value="Apartamento">Apartamento</option>
-        </select>
-        <label for="subject">Asunto</label>
-      </div>
+        <!-- Asunto -->
+        <div class="form-floating mb-3">
+          <select [(ngModel)]="ticketData.subject" class="form-control" id="subject">
+            <option value="" disabled selected>Selecciona un problema</option>
+            <option value="Zona Comun">Zona Común</option>
+            <option value="Apartamento">Apartamento</option>
+          </select>
+          <label for="subject">Asunto</label>
+        </div>
 
-      <!-- Descripción -->
-      <div class="form-floating mb-2">
-        <select
-          [(ngModel)]="selectedDescription"
-          class="form-control"
-          id="description"
-          (change)="onDescriptionChange($event)"
-        >
-          <option value="" disabled selected>Selecciona una descripción</option>
-          <option *ngFor="let option of descriptionOptions" [value]="option">{{ option }}</option>
-          <option value="Otros">Otros</option>
-        </select>
-        <label for="description">Descripción</label>
-      </div>
-      <div *ngIf="isOtherSelected" class="form-floating mb-2">
-        <textarea
-          [(ngModel)]="ticketData.description"
-          class="form-control"
-          placeholder="Descripción personalizada"
-          rows="3"
-        ></textarea>
-        <label>Descripción personalizada</label>
-      </div>
+        <!-- Descripción -->
+        <div class="form-floating mb-3">
+          <select
+            [(ngModel)]="selectedDescription"
+            class="form-control"
+            id="description"
+            (change)="onDescriptionChange($event)"
+          >
+            <option value="" disabled selected>Selecciona una descripción</option>
+            <option *ngFor="let option of descriptionOptions" [value]="option">{{ option }}</option>
+            <option value="Otros">Otros</option>
+          </select>
+          <label for="description">Descripción</label>
+        </div>
+        <div *ngIf="isOtherSelected" class="form-floating mb-3">
+          <textarea
+            [(ngModel)]="ticketData.description"
+            class="form-control"
+            placeholder="Descripción personalizada"
+            rows="3"
+          ></textarea>
+          <label>Descripción personalizada</label>
+        </div>
 
-      <!-- Botones -->
-      <div class="d-grid gap-2 mb-3">
-        <button type="button" (click)="createTicket()" class="btn btn-primary btn-lg">Enviar Ticket</button>
-        <button type="button" class="btn btn-secondary btn-lg" routerLink="/tickets-tenant">Volver</button>
+        <!-- Botón Enviar -->
+        <div class="d-grid gap-2">
+          <button type="button" (click)="createTicket()" class="btn btn-primary btn-lg">
+            Enviar Ticket
+          </button>
+          <button type="button" class="btn btn-secondary btn-lg" routerLink="/dashboard">
+            Volver
+          </button>
+        </div>
       </div>
     </div>
   </div>

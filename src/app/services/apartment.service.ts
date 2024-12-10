@@ -26,10 +26,11 @@ export class ApartmentService {
     return this.http.get<Apartment[]>(`${this.myAppUrl}${this.myApiUrl}`, { headers });
   }
 
+
   // Obtener apartamentos por Tenant ID
-  getApartmentsByTenantId(tenantId: number): Observable<{ id: number; name: string }[]> {
+  getApartmentsByTenantId(tenantId: number): Observable<Apartment[]> {
     const headers = this.getHeaders();
-    return this.http.get<{ id: number; name: string }[]>(`${this.myAppUrl}${this.myApiUrl}?tenantId=${tenantId}`, { headers });
+    return this.http.get<Apartment[]>(`${this.myAppUrl}/tenant/${tenantId}`, { headers });
   }
 
   // Obtener apartamento por ID

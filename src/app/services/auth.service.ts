@@ -25,7 +25,7 @@ export class AuthService {
       tap(response => {
         localStorage.setItem('token', response.token); // Guardamos el token
         localStorage.setItem('role', response.role); // Guardamos el rol
-        localStorage.setItem('id', response.id); // Guardamos el ID del usuario
+        localStorage.setItem('id', response.id); // Guardar Tenant ID
         localStorage.setItem('apartment_id', response.apartment_id);
       })
     );
@@ -34,6 +34,10 @@ export class AuthService {
 // Método para obtener el token almacenado
   getToken(): string | null {
     return localStorage.getItem('token');
+  }
+  
+  getTenantId(): string | null {
+    return localStorage.getItem('tenantId');
   }
 
 // Método para obtener el rol almacenado
