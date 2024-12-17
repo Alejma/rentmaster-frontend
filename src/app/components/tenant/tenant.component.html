@@ -1,7 +1,11 @@
+<!-- src/app/components/tenant/tenant.component.html -->
 <app-navbar></app-navbar>
 <div class="container">
-    
-    <button class="btn-add-tenant" routerLink= "/signIn">Agregar Arrendatario</button>
+    <button class="btn-add-tenant" routerLink="/signIn">
+        <i class="fa fa-user-plus"></i>
+        Agregar Arrendatario
+    </button>
+    <a routerLink= "/dashboard">Volver</a>
 
     <h2>ARRENDATARIOS</h2>
     <table class="tenant-table">
@@ -10,7 +14,7 @@
                 <th>Nombre</th>
                 <th>Correo Electrónico</th>
                 <th>Número Telefónico</th>
-                
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -19,21 +23,52 @@
                 <td>{{ tenant.email }}</td>
                 <td>{{ tenant.phone_number }}</td>
                 <td>
-                    
-                    <button class="btn btn-info">
-                        <i class="fa fa-eye"></i>
-                    </button>
-                    
-                   
-                    <button class="btn btn-edit">
+                    <button class="btn btn-edit" (click)="editTenant(tenant)">
                         <i class="fa fa-pencil"></i>
                     </button>
                     
-                    <button class="btn btn-delete">
+                    <button class="btn btn-delete" (click)="deleteTenant(tenant)">
                         <i class="fa fa-trash"></i>
                     </button>
                 </td>
             </tr>
         </tbody>
     </table>
+
+    <div *ngIf="successMessage" class="alert alert-success">
+        {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+    </div>
+
+    <!-- Formulario de Edición -->
+    <div *ngIf="selectedTenant" class="edit-form">
+        <h3>Editar Arrendatario</h3>
+        <form (ngSubmit)="saveTenant()">
+            <label for="name">Nombre:</label>
+            <input id="name" [(ngModel)]="editedTenant.name" name="name" required>
+
+            <label for="email">Correo Electrónico:</label>
+            <input id="email" type="email" [(ngModel)]="editedTenant.email" name="email" required>
+
+            <label for="phone_number">Número Telefónico:</label>
+            <input id="phone_number" [(ngModel)]="editedTenant.phone_number" name="phone_number" required>
+
+            <label for="payment_status">Estado de Pago:</label>
+            <input id="payment_status" [(ngModel)]="editedTenant.payment_status" name="payment_status" required>
+
+            <!-- Si deseas permitir cambiar la contraseña, añade el siguiente campo -->
+            <!-- 
+            <label for="password">Contraseña:</label>
+            <input id="password" type="password" [(ngModel)]="editedTenant.password" name="password" required>
+            -->
+
+            <button type="submit" class="btn btn-save">Guardar Cambios</button>
+            <button type="button" class="btn btn-cancel" (click)="cancelEdit()">Cancelar</button>
+        </form>
+    </div>
+
+    
+    <button class="btn-download-pdf" (click)="downloadTenantPDF()">Descargar PDF</button>
 </div>

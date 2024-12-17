@@ -3,13 +3,13 @@
     display: block;
     width: 100%;
     padding: 15px;
-    background-color: #2ecc71;
+    background-color: #006b72;
     color: white;
     border: none;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-bottom: 20px;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -17,7 +17,7 @@
 
 /* Hover para cambiar el color del botón */
 .btn-add-tenant:hover {
-    background-color: #27ae60;
+    background-color: #025271;
 }
 
 /* Contenedor principal */
@@ -99,3 +99,85 @@
     font-size: 18px;
     vertical-align: middle;
 }
+/* tenant.component.css */
+
+.container {
+    padding: 20px;
+  }
+  
+  .btn-edit, .btn-delete, .btn-save, .btn-cancel {
+    margin-right: 5px;
+  }
+  
+  .edit-form {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .edit-form label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .edit-form input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+  }
+  
+  .btn-save {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+  
+  .btn-cancel {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+  /* tenant.component.css */
+
+.alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+  }
+  
+  .alert-success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  .btn-download-pdf {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #349184; /* Color del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    font-size: 18px; /* Tamaño de la fuente */
+    font-weight: bold; /* Peso de la fuente */
+    text-align: center; /* Alineación del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 20px; /* Margen inferior */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s; /* Transición suave */
+  }
+
+  .btn-download-pdf:hover {
+    background-color: #1b8478; /* Color más oscuro al pasar el mouse */
+  }

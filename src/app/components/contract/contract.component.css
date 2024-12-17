@@ -98,3 +98,21 @@
     font-size: 18px;
 }
 
+.btn-download-pdf {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #349184; /* Color del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    font-size: 18px; /* Tamaño de la fuente */
+    font-weight: bold; /* Peso de la fuente */
+    text-align: center; /* Alineación del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 20px; /* Margen inferior */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s; /* Transición suave */
+  }
+
+  .btn-download-pdf:hover {
+    background-color: #1b8478; /* Color más oscuro al pasar el mouse */}

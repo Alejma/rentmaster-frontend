@@ -14,6 +14,8 @@ import { TenantService } from '../../services/tenant.service';
 import { ApartmentService } from '../../services/apartment.service';
 import { EditContractComponent } from '../edit-contract/edit-contract.component';
 
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 declare var bootstrap: any;
 
@@ -87,6 +89,74 @@ export class ContractComponent implements OnInit {
       console.error('Contract ID is undefined. Cannot navigate to edit page.');
     }
   }
+
+  public downloadContractPDF() {
+    const doc = new jsPDF();
+    let positionY = 30; // Posición inicial en Y después de la imagen
+  
+    // Cargar la imagen
+    const imgPath = 'assets/img/casa1.png';
+  
+    const img = new Image();
+    img.src = imgPath;
+    img.onload = () => {
+      const imgWidth = 50; // Ancho deseado de la imagen
+      const imgHeight = 50; // Alto deseado de la imagen
+  
+      // Centrar la imagen
+      const pageWidth = doc.internal.pageSize.width;
+      const centerX = (pageWidth - imgWidth) / 2;
+  
+      // Insertar la imagen
+      doc.addImage(img, 'PNG', centerX, 10, imgWidth, imgHeight);
+  
+      // Ajustar posición Y después de la imagen
+      positionY = 70; // Espacio después de la imagen
+  
+      // Título centrado y más grande
+      doc.setFontSize(24);
+      const title = 'Lista de Contratos';
+      const titleWidth = (doc.getStringUnitWidth(title) * doc.getFontSize()) / doc.internal.scaleFactor;
+      const titleX = (pageWidth - titleWidth) / 2; // Centrar título
+      doc.text(title, titleX, positionY);
+      positionY += 20;
+  
+      // Encabezado de la tabla (negrita)
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'bold');
+      doc.text('ID Contrato', 14, positionY);
+      doc.text('ID Apartment', 45, positionY);
+      doc.text('Arrendatario', 80, positionY);
+      doc.text('Tipo de contrato', 120, positionY);
+      positionY += 10;
+  
+      // Volver a la fuente normal para los datos
+      doc.setFont('helvetica', 'normal');
+  
+      // Agregar datos
+      this.contracts.forEach((contract) => {
+        doc.text(String(contract.contract_id), 14, positionY); // Convertido a string
+        doc.text(String(contract.apartment_id), 45, positionY);
+        doc.text(this.getTenantName(contract.tenant_id) || 'No asignado', 80, positionY);
+        doc.text(contract.type_contract || 'Desconocido', 120, positionY);
+        positionY += 10;
+  
+        // Nueva página si se sobrepasa el límite
+        if (positionY > 280) {
+          doc.addPage();
+          positionY = 20;
+        }
+      });
+  
+      // Guardar PDF
+      doc.save('Lista de contratos.pdf');
+    };
+  
+    img.onerror = () => {
+      console.error('Error cargando la imagen desde:', imgPath);
+    };
+  }
+  
 
 /*     deleteContract(contract_id: number): void {
     this.contractService.deleteContract(contract_id).subscribe(
