@@ -1,6 +1,7 @@
 /* Navbar container */
 .navbar {
-    background-color: #446ffd;
+    background-color: #1a399f;
+    /* #446ffd; */
     padding: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }

@@ -11,7 +11,7 @@ export class ApartmentService {
   private myApiUrl: string;
 
   constructor(private http: HttpClient) { 
-    this.myAppUrl = 'https://rentmaster-api.onrender.com'; 
+    this.myAppUrl = 'http://localhost:3001'; 
     this.myApiUrl = '/api/apartments'; 
   }
 
@@ -40,7 +40,7 @@ export class ApartmentService {
     });
     return this.http.delete(`${this.myAppUrl}${this.myApiUrl}/${apartment_id}`, {headers});
   }
-
+  
   getApartmentById(apartment_id: number): Observable<Apartment> {
     const token = localStorage.getItem('token'); 
     const headers = new HttpHeaders({
@@ -65,4 +65,5 @@ export class ApartmentService {
     });
     return this.http.put<Apartment>(`${this.myAppUrl}${this.myApiUrl}/${apartment.apartment_id}`, apartment, { headers });
   }
+
 }

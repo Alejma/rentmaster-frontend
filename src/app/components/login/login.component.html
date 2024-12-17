@@ -1,19 +1,62 @@
-<div class="wrapper">
-    <div *ngIf="!loading" class="body">
-        <img class="logo" src="assets/img/casa1.png" alt="img casa1">
-        <h1>Login</h1>
-        <div class="form-floating mb-3 mt-3">
-            <input type="text" [(ngModel)]="email" class="form-control" placeholder="name@example.com">
-            <label>Correo electronico</label>
+<div class="wrapper container">
+    <div class="row justify-content-center align-items-center min-vh-100">
+        <!-- Columna del formulario -->
+        <div class="col-md-5">
+            <div *ngIf="!loading" class="body">
+                <img class="logo mx-auto d-block" src="assets/img/casa1.png" alt="Logo RentMaster">
+                <h1 class="text-center mt-3">Login</h1>
+                <div class="form-floating mb-3 mt-3">
+                    <input
+                        type="text"
+                        [(ngModel)]="email"
+                        class="form-control"
+                        placeholder="name@example.com"
+                    />
+                    <label>Correo electrónico</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input
+                        type="password"
+                        [(ngModel)]="password"
+                        class="form-control"
+                        placeholder="Password"
+                    />
+                    <label>Contraseña</label>
+                </div>
+                <div class="d-grid gap-2">
+                    <button
+                        type="button"
+                        class="btn btn-primary btn-lg"
+                        (click)="login()"
+                    >
+                        Iniciar sesión
+                    </button>
+                </div>
+                <p class="mt-3 text-center">
+                    ¿Olvidaste la contraseña?
+                    <a routerLink="/signIn">Recuperar</a>
+                </p>
+            </div>
+            <app-spinner *ngIf="loading"></app-spinner>
         </div>
-        <div class="form-floating mb-3">
-            <input type="password" [(ngModel)]="password" class="form-control" placeholder="Password">
-            <label>Contraseña</label>
-        </div>
-        <div class="d-grid gap-2">
-            <button type="button" class="btn btn-primary btn-lg" (click)="login()">Iniciar sesión</button>
-        </div>
-        <p class="mt-3">Olvidaste la contraseña? <a routerLink= "/signIn" >Recuperar</a></p>
+                <!-- Columna de información -->
+                <div class="col-md-5 d-none d-md-block">
+                    <div class="info-box p-4">
+                        <h2 class="text-primary">Bienvenido a RentMaster</h2>
+                        <p class="mt-3">
+                            RentMaster es la solución ideal para la gestión de arrendamientos. Simplifica el
+                            proceso de administración de inquilinos, contratos y propiedades, todo desde una
+                            plataforma intuitiva y segura.
+                        </p>
+                        <ul class="list-unstyled mt-3">
+                            <li><strong>✔ Gestión de arrendatarios:</strong> Mantén tus datos organizados.</li>
+                            <li><strong>✔ Administración de propiedades:</strong> Controla contratos y pagos.</li>
+                            <li><strong>✔ Soporte en tiempo real:</strong> Atención rápida y eficiente.</li>
+                        </ul>
+                        <p class="mt-3 text-muted">
+                           Rentmaster 2024.
+                        </p>
+                </div>
+                </div>
+
     </div>
-    <app-spinner *ngIf="loading"></app-spinner>
-</div>

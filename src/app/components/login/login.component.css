@@ -1,0 +1,43 @@
+.wrapper {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    
+}
+
+.logo {
+    max-width: auto;
+}
+
+.info-box {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: justify;
+}
+
+.info-box h2 {
+    font-size: 1.75rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.info-box ul li {
+    margin-bottom: 10px;
+}
+
+.form-control {
+    border-radius: 0.5rem;
+}
+
+.btn {
+    border-radius: 0.5rem;
+}
+.card {
+    width: 400px;
+    height: 450px;
+    border-radius: 30px;
+    background: lightgrey;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
+  }

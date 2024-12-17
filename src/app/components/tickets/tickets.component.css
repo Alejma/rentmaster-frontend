@@ -1,0 +1,204 @@
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.left-section {
+    width: 50%;
+    padding-right: 20px;
+}
+.left-image {
+    max-width: 70%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.welcome-text {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.welcome-text h2 {
+    color: #0d395e;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.right-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.info-box {
+    background-color: #e6f2ff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-info h3 {
+    font-size: 1.2rem;
+    color: #0d395e;
+}
+
+.ticket-info p {
+    font-size: 1rem;
+    color: #333;
+}
+
+.btn-add-ticket {
+    width: 100%;
+    padding: 15px;
+    background-color: #1a868e;
+    color: white;
+    border: none;
+    font-size: 17px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-add-ticket:hover {
+    background-color: #025271;
+}
+
+.ticket-list {
+    margin-top: 20px;
+}
+
+.ticket-list table {
+    width: 100%;
+    max-width: 100%; /* Limita el ancho máximo de la tabla al ancho del contenedor */
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 8px; /* Borde redondeado solo en las esquinas de la tabla */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-list th, .ticket-list td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.ticket-list th {
+    background-color: #0d395e;
+    color: white;
+}
+
+.ticket-list td {
+    background-color: #e6f2ff;
+}
+
+/* Estilos generales para los botones */
+.btn {
+    padding: 6px 12px; /* Reduce el espaciado interno */
+    font-size: 12px; /* Disminuye el tamaño de la fuente */
+    font-weight: bold;
+    border: none;
+    border-radius: 4px; /* Bordes redondeados más pequeños */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transición suave */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    margin: 4px; /* Reduce el espaciado entre botones */
+  }
+  
+  /* Botón 'Pendiente' */
+  .btn-pendiente {
+    background-color: #ffcc00; /* Color de fondo amarillo */
+    color: #fff; /* Color de texto blanco */
+  }
+  
+  .btn-pendiente:hover {
+    background-color: #e6b800; /* Cambio de color en hover */
+    transform: scale(1.05); /* Efecto de aumento */
+  }
+  
+  .btn-pendiente:disabled {
+    background-color: #808080; /* Color de fondo cuando está deshabilitado */
+    cursor: not-allowed; /* Cursor de no permitido */
+    opacity: 0.6; /* Opacidad reducida */
+  }
+  
+  /* Botón 'En Proceso' */
+  .btn-en-proceso {
+    background-color: #007bff; /* Color de fondo azul */
+    color: #fff; /* Color de texto blanco */
+  }
+  
+  .btn-en-proceso:hover {
+    background-color: #0056b3; /* Cambio de color en hover */
+    transform: scale(1.05); /* Efecto de aumento */
+  }
+  
+  .btn-en-proceso:disabled {
+    background-color: #808080; /* Color de fondo cuando está deshabilitado */
+    cursor: not-allowed; /* Cursor de no permitido */
+    opacity: 0.6; /* Opacidad reducida */
+  }
+  
+  /* Botón 'Resuelto' */
+  .btn-resuelto {
+    background-color: #28a745; /* Color de fondo verde */
+    color: #fff; /* Color de texto blanco */
+  }
+  
+  .btn-resuelto:hover {
+    background-color: #218838; /* Cambio de color en hover */
+    transform: scale(1.05); /* Efecto de aumento */
+  }
+  
+  .btn-resuelto:disabled {
+    background-color: #808080; /* Color de fondo cuando está deshabilitado */
+    cursor: not-allowed; /* Cursor de no permitido */
+    opacity: 0.6; /* Opacidad reducida */
+  }
+
+  .ticket-counts {
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  
+  .count-item {
+    margin-right: 20px;
+    font-weight: bold;
+    color: #000000;
+  }
+  
+  .count-item strong {
+    color: #002144;  /* Puedes cambiar el color a tu gusto */
+  }
+  
+  .btn-assign {
+    background-color: #f19336;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .btn-assign:hover {
+    background-color: #b1600f;
+  }
+
+  /* Estilos para el contenedor de botones de acciones */
+.action-group {
+  margin-bottom: 10px; /* Añade espacio debajo del botón de asignación */
+}
+
+.status-group {
+  display: flex;
+  flex-direction: column; /* Muestra los botones de estado en columna */
+  gap: 5px; /* Espacio entre botones */
+}

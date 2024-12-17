@@ -1,7 +1,11 @@
+<!-- src/app/components/navbar/navbar.component.html -->
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <nav class="navbar navbar-expand-lg bg-dark-blue">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/dashboard">RentMaster</a>
+    <a class="navbar-brand" routerLink="/dashboard">
+        <i class="bi bi-house" style="font-size: 2rem; color: #ffffff;"></i> RentMaster</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,23 +13,42 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto justify-content-center">          
             <li class="nav-item">
-                <a class="nav-link btn btn-nav" routerLink="/apartments">Apartamentos</a>
+                <a class="nav-link btn btn-nav" routerLink="/apartments">
+                    <i class="bi bi-building"></i> Apartamentos
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-nav" routerLink="/tenants">Arrendatarios</a>
+                <a class="nav-link btn btn-nav" routerLink="/tenants">
+                    <i class="bi bi-people"></i> Arrendatarios
+                </a>
             </li>           
             <li class="nav-item">
-                <a class="nav-link btn btn-nav" routerLink="/contracts">Contratos</a>
+                <a class="nav-link btn btn-nav" routerLink="/contracts">
+                    <i class="bi bi-file-earmark-text"></i> Contratos
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-nav" routerLink="/tickets">Tickets</a>
+                <a class="nav-link btn btn-nav" routerLink="/tickets">
+                    <i class="bi bi-ticket"></i> Tickets
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-nav" routerLink="/payments">
+                    <i class="bi bi-cash-stack"></i> Pagos
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-nav" routerLink="/resume">
+                    <i class="bi bi-bar-chart"></i> Estadísticas
+                </a>
             </li>
         </ul>
         
-        <ul class="navbar-nav ms-auto align-items-left">
+        <ul class="navbar-nav ms-auto align-items-center">     
+            <!-- Botón de cierre de sesión -->         
             <li class="nav-item">
-                <a class="nav-link">
-                    <i class="fa fa-sign-out " style="font-size:48px;color:rgb(255, 255, 255)" routerLink="/login"></i>
+                <a class="nav-link" routerLink="/login">
+                    <i class="fa fa-sign-out" style="font-size:24px;color:rgb(255, 255, 255)"></i>
                 </a>
             </li>
         </ul>

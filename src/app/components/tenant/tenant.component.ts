@@ -7,9 +7,9 @@ import { TenantService } from '../../services/tenant.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink, ActivatedRoute } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+
 
 @Component({
   selector: 'app-tenant',

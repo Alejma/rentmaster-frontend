@@ -8,9 +8,9 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { NavbarComponent } from '../navbar/navbar.component';  // Importar el componente Navbar
-
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+
 
 @Component({
   selector: 'app-apartment',

@@ -1,0 +1,98 @@
+/* Ajustar margen superior */
+.container {
+  margin-top: 20px;
+}
+
+.container h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Estilo moderno para el formulario */
+form {
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* Mejora de la tabla */
+.table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 15px;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Encabezados de la tabla */
+.table thead th {
+  background-color: #007bff;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 12px;
+  border-bottom: 2px solid #ddd;
+  text-align: center;
+}
+
+/* Filas de la tabla */
+.table tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f8f9fa; /* Color alternativo para filas pares */
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+/* Efecto hover en las filas */
+.table tbody tr:hover {
+  background-color: #e9ecef; /* Suave gris al pasar el mouse */
+  cursor: pointer;
+}
+
+/* Celdas */
+.table td, .table th {
+  text-align: center;
+  padding: 12px;
+  vertical-align: middle;
+  border: none;
+}
+
+/* Separación visual entre filas */
+.table tbody td {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Bordes redondeados en esquinas de la tabla */
+.table {
+  border-radius: 12px;
+}
+
+.table thead th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.table thead th:last-child {
+  border-top-right-radius: 12px;
+}
+
+.table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+
+.table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+/* Iconos o interactividad (opcional) */
+
+
+

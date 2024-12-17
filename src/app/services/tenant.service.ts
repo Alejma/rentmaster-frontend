@@ -102,4 +102,13 @@ export class TenantService {
       { headers }
     );
   }
+
+  getTenantDocuments(tenantId: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<any>(`${this.myAppUrl}${this.myApiUrl}documents/${tenantId}`, { headers });
+  }
 }

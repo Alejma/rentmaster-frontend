@@ -8,24 +8,19 @@ import { provideToastr } from 'ngx-toastr';
 import { EditContractComponent } from './components/edit-contract/edit-contract.component';
 import { registerLocaleData } from '@angular/common';
 import localeEsCo from '@angular/common/locales/es-CO';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { registerLocaleData } from '@angular/common';
+import localeEsCo from '@angular/common/locales/es-CO';
 
 // Registrar el locale 'es-CO'
 registerLocaleData(localeEsCo, 'es-CO');
 
+
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
-    provideHttpClient(),
-    HttpClientModule,
-    FormsModule,
-    provideAnimations(),
-    provideToastr({
-      timeOut: 4000,
-      positionClass: 'toast-bottom-right',
-      preventDuplicates: true,
-    }),
-    EditContractComponent,
-    { provide: LOCALE_ID, useValue: 'es-CO' }  // Registrar el locale
-  ],
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideHttpClient(), HttpClientModule, FormsModule,provideAnimations(),provideToastr({
+    timeOut: 4000,
+    positionClass: 'toast-bottom-right',
+    preventDuplicates: true,
+  }), EditContractComponent, NgApexchartsModule, { provide: LOCALE_ID, useValue: 'es-CO' }],
+  
 };
