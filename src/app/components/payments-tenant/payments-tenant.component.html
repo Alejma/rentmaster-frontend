@@ -1,0 +1,116 @@
+<app-navbar-tenant></app-navbar-tenant>
+<div class="container">
+    <div class="row">
+      <!-- Sección Izquierda: Información -->
+      <div class="col-md-6">
+        <div class="info-section">
+          <h2>Paga tu Apartamento</h2>
+          <p>
+            Realiza el pago en línea de tu apartamento de manera rápida y segura. Asegúrate de llenar correctamente todos los campos del formulario.
+          </p>
+          <ul>
+            <li><strong>Soporte 24/7:</strong> Estamos disponibles para ayudarte en cualquier momento.</li>
+            <li><strong>Pagos Seguros:</strong> Usamos métodos de cifrado avanzados para proteger tu información.</li>
+            <li><strong>Confirmación Instantánea:</strong> Recibirás un correo de confirmación al completar el pago.</li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Sección Derecha: Formulario de Pago -->
+      <div class="col-md-6">
+        <div class="form-section">
+          <h3>Formulario de Pago</h3>
+  
+          <!-- Apartamento Estático -->
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="apartmentStatic"
+              value="Apartamento 2"
+              readonly
+            />
+            <label for="apartmentStatic">Apartamento</label>
+          </div>
+  
+          <!-- Monto Estático -->
+          <div class="form-floating mb-3">
+            <input
+              type="number"
+              class="form-control"
+              id="paymentAmount"
+              [value]="paymentAmount"
+              readonly
+            />
+            <label for="paymentAmount">Monto a pagar (COP)</label>
+          </div>
+  
+          <!-- Métodos de Pago -->
+          <div class="form-floating mb-3">
+            <select
+              class="form-control"
+              id="paymentMethod"
+              [(ngModel)]="paymentMethod"
+            >
+              <option value="" disabled selected>Selecciona un método de pago</option>
+              <option value="CreditCard">Tarjeta de Crédito o Débito</option>
+              <option value="Cash">Efectivo</option>
+            </select>
+            <label for="paymentMethod">Método de Pago</label>
+          </div>
+  
+          <!-- Detalles de Tarjeta (Condicional) -->
+          <div *ngIf="paymentMethod === 'CreditCard'" class="card-details">
+            <h4>Detalles de la Tarjeta</h4>
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="cardNumber"
+                [(ngModel)]="cardDetails.cardNumber"
+                placeholder="Número de Tarjeta"
+              />
+              <label for="cardNumber">Número de Tarjeta</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="cardHolder"
+                [(ngModel)]="cardDetails.cardHolder"
+                placeholder="Nombre del Titular"
+              />
+              <label for="cardHolder">Nombre del Titular</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="expiry"
+                [(ngModel)]="cardDetails.expiry"
+                placeholder="MM/AA"
+              />
+              <label for="expiry">Fecha de Expiración (MM/AA)</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="cvv"
+                [(ngModel)]="cardDetails.cvv"
+                placeholder="CVV"
+              />
+              <label for="cvv">CVV</label>
+            </div>
+          </div>
+  
+          <!-- Botones -->
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary btn-lg" (click)="processPayment()">Pagar</button>
+            <button class="btn btn-secondary btn-lg" (click)="goToDashboard()">Volver</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

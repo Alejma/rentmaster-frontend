@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PaymentsTenantComponent } from './components/payments-tenant/payments-tenant.component';
 import { TenantComponent } from './components/tenant/tenant.component';
 import { ApartmentComponent } from './components/apartment/apartment.component';
 import { NewApartmentComponent } from './components/new-apartment/new-apartment.component';
@@ -45,6 +46,7 @@ export const routes: Routes = [
     {path: 'support-documents', component: DocumentsSupComponent},
     {path: 'resume', component: ResumeComponent},
     {path: 'update-tenant', component: UpdateTenantComponent},
+    {path:'payments-tenant', component: PaymentsTenantComponent},
     {path:'**', component: NotFoundComponent}
     // redirectTo: 'login', pathMatch:'full'
 ];
