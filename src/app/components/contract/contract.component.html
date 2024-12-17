@@ -25,6 +25,9 @@
                     <button class="btn-square btn-blue" (click)="showInfo(contract)">
                         <i class="fa fa-eye"></i>
                     </button>
+<!--                     <button class="btn-square btn-yellow"  (click)="editContract(contract.contract_id)">
+                        <i class="fa fa-pencil"></i>
+                    </button> -->
                 </td>
             </tr>
         </tbody>
@@ -48,7 +51,7 @@
                                 <div class="card-body">
                                     <p><strong>ID Contrato:</strong> {{ selectedContract?.contract_id }}</p>
                                     <p><strong>Apartamento:</strong> {{ selectedContract?.apartment_id }}</p> <!-- Mostrar el nombre del apartamento -->
-                                    <p><strong>Inquilino:</strong> {{ selectedContract?.tenant_id }}-{{ getTenantName(selectedContract?.tenant_id)  }}</p> <!-- Mostrar el nombre del inquilino -->
+                                    <p><strong>Inquilino:</strong> {{  getTenantName(selectedContract?.tenant_id)  }}</p> <!-- Mostrar el nombre del inquilino -->
                                 </div>
                             </div>
                         </div>
@@ -88,12 +91,7 @@
                                 <div class="card-body">
                                     <p><strong>Tipo de Contrato:</strong> {{ selectedContract?.type_contract }}</p>
                                     <p><strong>Estado:</strong> {{ selectedContract?.status }}</p>
-                                                    <!-- Mostrar mensaje de documentos completos si el inquilino tiene documentos -->
-                                    <!-- Mostrar mensaje de documentos completos si el inquilino tiene documentos -->
-                                    <p><strong>Documentos de soporte:</strong> 
-                                        <span *ngIf="tenantHasDocuments">{{ 'Documentos completos ✔' }}</span>
-                                        <span *ngIf="!tenantHasDocuments">{{ 'Falta Documentos ❌' }}</span>
-                                    </p>
+                                    <p><strong>Términos y Condiciones:</strong> {{ selectedContract?.terms_conditions }}</p>
                                 </div>
                             </div>
                         </div>
@@ -105,4 +103,7 @@
             </div>
         </div>
     </div>
+
+    <button class="btn-download-pdf" (click)="downloadContractPDF()">Descargar PDF</button>
+
 </div>

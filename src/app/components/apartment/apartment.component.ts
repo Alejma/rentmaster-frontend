@@ -9,6 +9,9 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { NavbarComponent } from '../navbar/navbar.component';  // Importar el componente Navbar
 
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
 @Component({
   selector: 'app-apartment',
   standalone: true,
@@ -99,4 +102,74 @@ export class ApartmentComponent implements OnInit {
   updateTenant(apartment: Apartment) : void {
     this.router.navigate(['/update-tenant', { id: apartment.apartment_id }]);
   }
+
+  public downloadApartmentPDF() {
+    const doc = new jsPDF();
+    let positionY = 30; // Posición inicial en Y después de la imagen
+  
+    // Cargar la imagen
+    const imgPath = 'assets/img/casa1.png';
+  
+    const img = new Image();
+    img.src = imgPath;
+    img.onload = () => {
+      const imgWidth = 50; // Ancho deseado de la imagen
+      const imgHeight = 50; // Alto deseado de la imagen
+  
+      // Centrar la imagen
+      const pageWidth = doc.internal.pageSize.width;
+      const centerX = (pageWidth - imgWidth) / 2;
+  
+      // Insertar la imagen
+      doc.addImage(img, 'PNG', centerX, 10, imgWidth, imgHeight);
+  
+      // Ajustar posición Y después de la imagen
+      positionY = 70; // Espacio después de la imagen
+  
+      // Título centrado y más grande
+      doc.setFontSize(24); // Aumenta el tamaño de la fuente
+      const title = 'Lista de Apartamentos';
+      const titleWidth = (doc.getStringUnitWidth(title) * doc.getFontSize()) / doc.internal.scaleFactor;
+      const titleX = (pageWidth - titleWidth) / 2; // Centrar título
+      doc.text(title, titleX, positionY);
+      positionY += 20;
+  
+      // Encabezado de la tabla (negrita)
+      doc.setFontSize(12);
+      doc.setFont('helvetica', 'bold');
+      doc.text('Nombre', 14, positionY);
+      doc.text('Arrendatario', 70, positionY);
+      doc.text('Precio', 130, positionY);
+      doc.text('Dirección', 170, positionY);
+      doc.text('Estado', 230, positionY);
+      positionY += 10;
+  
+      // Volver a la fuente normal para los datos
+      doc.setFont('helvetica', 'normal');
+  
+      // Agregar datos
+      this.apartments.forEach((apartment) => {
+        doc.text(apartment.name || '', 14, positionY);
+        doc.text(apartment.tenant_name || 'No asignado', 70, positionY);
+        doc.text(`${apartment.rent_price}`, 130, positionY);
+        doc.text(apartment.address || 'No disponible', 170, positionY);
+        doc.text(apartment.status || 'Desconocido', 230, positionY);
+        positionY += 10;
+  
+        // Nueva página si se sobrepasa el límite
+        if (positionY > 280) {
+          doc.addPage();
+          positionY = 20;
+        }
+      });
+  
+      // Guardar PDF
+      doc.save('Lista de apartamentos.pdf');
+    };
+  
+    img.onerror = () => {
+      console.error('Error cargando la imagen desde:', imgPath);
+    };
+  }
+  
 }
