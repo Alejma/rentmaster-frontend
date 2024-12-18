@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { RouterLink, Router } from '@angular/router';
 import { Contract} from '../../interfaces/contract';
@@ -30,7 +30,8 @@ declare var bootstrap: any;
 export class ContractComponent implements OnInit {
   contracts: Contract[] = [];
   tenants: Tenant[] = [];
-  selectedContract: Contract | null = null;
+  @Input()selectedContract: Contract | null = null;
+  tenantHasDocuments: boolean = false;
   
 
   constructor(
@@ -74,14 +75,29 @@ export class ContractComponent implements OnInit {
     return tenant ? tenant.name : 'Inquilino no encontrado';
   }
 
-  // Mostrar la información completa del contrato seleccionado en el modal
-  showInfo(contract: Contract): void {
-    this.selectedContract = contract;
+ // Mostrar la información completa del contrato seleccionado en el modal
+ showInfo(contract: Contract): void {
+  this.selectedContract = contract;
 
+  // Verificar si el inquilino tiene documentos antes de abrir el modal
+  if (this.selectedContract && this.selectedContract.tenant_id) {
+    this.checkTenantDocuments(this.selectedContract.tenant_id).then(() => {
+      const modalElement = document.getElementById('contractModal');
+      const modal = new bootstrap.Modal(modalElement);
+      modal.show();
+    }).catch(() => {
+      // Si hay error, simplemente abrir el modal
+      const modalElement = document.getElementById('contractModal');
+      const modal = new bootstrap.Modal(modalElement);
+      modal.show();
+    });
+  } else {
+    // Si no hay contrato seleccionado o no tiene tenant_id, abrir el modal
     const modalElement = document.getElementById('contractModal');
     const modal = new bootstrap.Modal(modalElement);
     modal.show();
   }
+}
   editContract(contractId: number | undefined): void {
     if (contractId !== undefined) {
       this.router.navigate(['/edit-contract', contractId]);
@@ -89,6 +105,24 @@ export class ContractComponent implements OnInit {
       console.error('Contract ID is undefined. Cannot navigate to edit page.');
     }
   }
+
+     // Verificar si el inquilino tiene documentos
+     checkTenantDocuments(tenantId: number): Promise<void> {
+      return new Promise((resolve, reject) => {
+        this.tenantService.getTenantDocuments(tenantId).subscribe(
+          (response) => {
+            // Verificar si hay documentos
+            this.tenantHasDocuments = response.documents.length > 0;
+            resolve();
+          },
+          (error) => {
+            console.error('Error al obtener los documentos:', error);
+            this.tenantHasDocuments = false; // Si hay error, no mostrar documentos completos
+            reject(error);
+          }
+        );
+      });
+    }
 
   public downloadContractPDF() {
     const doc = new jsPDF();

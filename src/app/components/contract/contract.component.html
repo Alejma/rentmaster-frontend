@@ -91,7 +91,11 @@
                                 <div class="card-body">
                                     <p><strong>Tipo de Contrato:</strong> {{ selectedContract?.type_contract }}</p>
                                     <p><strong>Estado:</strong> {{ selectedContract?.status }}</p>
-                                    <p><strong>Términos y Condiciones:</strong> {{ selectedContract?.terms_conditions }}</p>
+                                    <!-- Mostrar mensaje de documentos completos si el inquilino tiene documentos -->
+                                    <p><strong>Documentos de soporte:</strong> 
+                                        <span *ngIf="tenantHasDocuments">{{ 'Documentos completos ✔' }}</span>
+                                        <span *ngIf="!tenantHasDocuments">{{ 'Falta Documentos ❌' }}</span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
