@@ -1,0 +1,61 @@
+<app-navbar-tenant></app-navbar-tenant>
+<div class="container">
+  <!-- Sección izquierda -->
+  <div class="left-section">
+    <div class="welcome-text">
+      <h2>Bienvenido a Mis Apartamentos</h2>
+      <p>Gestiona fácilmente tus apartamentos desde esta página. Aquí puedes ver todos tus apartamentos registrados, junto con sus detalles.</p>
+      <ul>
+        <li>Revisa los detalles de tus apartamentos</li>
+        <li>Actualiza información cuando sea necesario</li>
+        <li>Administra estados de ocupación</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Sección derecha -->
+  <div class="right-section">
+    <div class="ticket-container">
+      <h3>Tus Apartamentos</h3>
+      <p *ngIf="!apartments || apartments.length === 0" class="no-tickets-message">No tienes apartamentos registrados.</p>
+      <table *ngIf="apartments && apartments.length > 0" class="ticket-table">
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Estado</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let apartment of apartments">
+            <td>{{ apartment.apartment_id }}</td>
+            <td>{{ apartment.name }}</td>
+            <td>{{ apartment.address }}</td>
+            <td>{{ apartment.status }}</td>
+            <td>
+              <button class="btn-reply" (click)="viewApartmentDetails(apartment)">
+                <i class="fa-solid fa-circle-info"></i> Detalles
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" [class.show]="showDetails">
+  <div class="modal-content">
+    <span class="close" (click)="closeDetails()">&times;</span>
+    <h2>Detalles del Apartamento</h2>
+    <div *ngIf="selectedApartment">
+      <p><strong>Nombre:</strong> {{ selectedApartment.name }}</p>
+      <p><strong>Dirección:</strong> {{ selectedApartment.address }}</p>
+      <p><strong>Estado:</strong> {{ selectedApartment.status }}</p>
+    </div>
+    <button class="btn-close" (click)="closeDetails()"></button>
+  </div>
+</div>

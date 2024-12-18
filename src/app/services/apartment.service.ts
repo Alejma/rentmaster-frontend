@@ -24,6 +24,14 @@ export class ApartmentService {
     return this.http.get<Apartment[]>(`${this.myAppUrl}${this.myApiUrl}`, { headers });
   }
 
+  getApartmentsByTenantId(tenantId: number): Observable<Apartment[]> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Apartment[]>(`${this.myAppUrl}${this.myApiUrl}/tenant/${tenantId}`, { headers });
+  }
+
   // Registrar un nuevo Apartamento
   addApartment(apartment: Apartment): Observable<any> {
     const token = localStorage.getItem('token');

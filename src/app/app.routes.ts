@@ -21,7 +21,8 @@ import { ResumeComponent } from './components/resume/resume.component';
 import { DocumentsSupComponent } from './components/documents-sup/documents-sup.component';
 import { UpdateTenantComponent } from './components/update-tenant/update-tenant.component';
 import { PaymentsComponent } from './components/payments/payments.component';
-
+import { PaymentsTenantComponent } from './components/payments-tenant/payments-tenant.component';
+import { ApartmentTenantComponent } from './components/apartment-tenant/apartment-tenant.component';
 
 
 export const routes: Routes = [
@@ -30,9 +31,11 @@ export const routes: Routes = [
     {path:'signIn', component: SignInComponent},
     {path:'dashboard', component: DashboardComponent},
     {path: 'tenants', component: TenantComponent },
+    {path: 'apartment-tenant', component:ApartmentTenantComponent},
     {path: 'apartments', component: ApartmentComponent},
     {path: 'contracts', component: ContractComponent},
     {path: 'tickets', component: TicketsComponent},
+    {path: 'payments-tenant', component:PaymentsTenantComponent},
     {path: 'create-ticket', component: CreateTicketComponent},
     {path: 'new_apartment', component: NewApartmentComponent},
     {path: 'info-apartment', component: InfoApartmentComponent},

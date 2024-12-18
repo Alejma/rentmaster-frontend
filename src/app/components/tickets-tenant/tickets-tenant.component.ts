@@ -6,11 +6,12 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { TicketService } from '../../services/ticket.service';
 import { Ticket } from '../../interfaces/ticket';
 import { CommonModule } from '@angular/common';
+import { NavbarTenantComponent } from "../navbar-tenant/navbar-tenant.component";
 
 @Component({
   selector: 'app-tickets-tenant',
   standalone: true,
-  imports: [NavbarComponent,CommonModule, RouterLink],
+  imports: [ CommonModule, RouterLink, NavbarTenantComponent],
   templateUrl: './tickets-tenant.component.html',
   styleUrl: './tickets-tenant.component.css'
 })

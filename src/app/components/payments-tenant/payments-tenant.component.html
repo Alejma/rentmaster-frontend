@@ -1,0 +1,127 @@
+<app-navbar-tenant></app-navbar-tenant>
+<div class="notification-container">
+    <div *ngFor="let notification of notifications" class="notification">
+      {{ notification }}
+    </div>
+  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="info-section">
+        <h2>Paga tu Apartamento</h2>
+        <p>Realiza el pago en línea de tu apartamento de manera rápida y segura.</p>
+        <ul>
+          <li><strong>Soporte 24/7:</strong> Estamos disponibles para ayudarte en cualquier momento.</li>
+          <li><strong>Pagos Seguros:</strong> Usamos métodos de cifrado avanzados para proteger tu información.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-section">
+        <h3>Formulario de Pago</h3>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="apartmentStatic" value="Apartamento 2" readonly />
+          <label for="apartmentStatic">Apartamento</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" id="paymentAmount" [value]="paymentAmount" readonly />
+          <label for="paymentAmount">Monto a pagar (COP)</label>
+        </div>
+        <div class="form-floating mb-3">
+          <select class="form-control" id="paymentMethod" [(ngModel)]="paymentMethod">
+            <option value="" disabled selected>Selecciona un método de pago</option>
+            <option value="Tarjeta de credito">Tarjeta de Crédito o Débito</option>
+          </select>
+          <label for="paymentMethod">Método de Pago</label>
+        </div>
+
+        <!-- Detalles de la tarjeta de crédito -->
+        <div *ngIf="paymentMethod === 'Tarjeta de credito'" class="card-details">
+          <h4>Detalles de la Tarjeta</h4>
+          <div class="form-floating mb-3">
+            <input 
+              type="text" 
+              class="form-control" 
+              id="cardNumber" 
+              [(ngModel)]="cardDetails.cardNumber" 
+              placeholder="Número de Tarjeta" 
+              maxlength="16" 
+            />
+            <label for="cardNumber">Número de Tarjeta</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input 
+              type="text" 
+              class="form-control" 
+              id="cardHolder" 
+              [(ngModel)]="cardDetails.cardHolder" 
+              placeholder="Nombre del Titular" 
+            />
+            <label for="cardHolder">Nombre del Titular</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input 
+              type="text" 
+              class="form-control" 
+              id="expiry" 
+              [(ngModel)]="cardDetails.expiry" 
+              placeholder="MM/AA" 
+              maxlength="5" 
+            />
+            <label for="expiry">Fecha de Expiración (MM/AA)</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input 
+              type="password" 
+              class="form-control" 
+              id="cvv" 
+              [(ngModel)]="cardDetails.cvv" 
+              placeholder="CVV" 
+              maxlength="3" 
+            />
+            <label for="cvv">CVV</label>
+          </div>
+        </div>
+
+        <div class="d-grid gap-2">
+
+          <button class="btn btn-secondary btn-lg" (click)="goToDashboard()">Volver</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabla de pagos realizados -->
+  <div class="row mt-5">
+    <div class="col-12">
+      <h4>Historial de Pagos</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Monto</th>
+            <th>Método de Pago</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let payment of payments; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ payment.amount }}</td>
+            <td>{{ payment.payment_method }}</td>
+            <td>{{ payment.status }}</td>
+            <td>
+              <button 
+                class="btn btn-primary btn-sm" 
+                [disabled]="payment.status === 'Pago'" 
+                (click)="processPayment(payment)"
+              >
+                Pagar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

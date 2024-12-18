@@ -10,7 +10,7 @@
     </div>
     <!-- Primera fila de tarjetas (Arrendatarios y Apartamentos) -->
     <div class="card-row">
-        <div class="card apartments-card" routerLink="/apartments">
+        <div class="card apartments-card" routerLink="/apartment-tenant">
             <i class="bi bi-building" style="font-size: 2rem;"></i>
             <h3>Apartamentos</h3>
             <p>Administra tus Apartamentos</p>
@@ -24,20 +24,21 @@
 
     <!-- Segunda fila de tarjetas (Contratos y Tickets) -->
     <div class="card-row">
-        <div class="card contracts-card" routerLink="/contracts">
-            <i class="bi bi-file-earmark-text" style="font-size: 2rem;"></i>
-            <h3>Contratos</h3>
-            <p>Administra tus contratos</p>
-        </div>
         <div class="card tickets-card" routerLink="/tickets-tenant">
             <i class="bi bi-ticket-perforated" style="font-size: 2rem;"></i>
             <h3>Tickets</h3>
             <p>Administra tus tickets</p>
         </div>
 
-        <div class="card payments-card" (click)="downloadInvoice()">
+        <div class="card payments-card" routerLink="/payments-tenant">
             <i class="bi bi-cash-stack" style="font-size: 2rem;"></i>
             <h3>Pagos</h3>
+            <p>Gestiona tus pagos y tus facturas</p>
+        </div>
+
+        <div class="card payments-card" (click)="downloadInvoice()">
+            <i class="bi bi-receipt" style="font-size: 2rem;"></i>
+            <h3>Factura</h3>
             <p>Descargar Factura</p>
         </div>
     </div>
